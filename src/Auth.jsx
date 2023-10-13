@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "./supabaseClient";
+import Register from "./pages/Auth/Register";
+
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -57,6 +59,7 @@ export default function Auth() {
             </button>
           </div>
         </form>
+        <Register />
       </div>
     </div>
   );
