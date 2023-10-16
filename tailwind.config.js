@@ -1,9 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        focus: '#ef4444',
+        hoverFocus: '#f87171',
+        buttonLink: '#38bdf8',
+        hoverButtonLink: '#7dd3fc'
+      }
+    },
   },
   plugins: [],
 }
-
