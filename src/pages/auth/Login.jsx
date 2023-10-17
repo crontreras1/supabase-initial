@@ -56,7 +56,7 @@ function Login() {
             </form>
 
             <p className="mt-10 text-center text-sm text-black">
-                ¿Aún no tienes cuenta? <NavLink to='/sign-in' className='font-semibold leading-6 text-buttonLink hover:text-hoverButtonLink underline'>Crear Cuenta</NavLink>
+                ¿Aún no tienes cuenta? <NavLink to='/register' className='font-semibold leading-6 text-buttonLink hover:text-hoverButtonLink underline'>Crear Cuenta</NavLink>
             </p>
         </div>
       </div>

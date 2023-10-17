@@ -8,12 +8,23 @@ function Register() {
         // const email = e.target.email.value
         // const password = e.target.password.value
 
-        const { data, error } = await supabase.auth.signUp({
+        const { data } = await supabase.auth.signUp({
             email: e.target.email.value,
             password: e.target.password.value
           })
         
-        console.log(error.message, data);
+        const socialMedia = [
+            {
+            name: facebook,
+            url: 'www.example.com',
+            icon: '<i class="fi fi-brands-facebook"></i>'
+            },
+        ]
+        console.log(data);
+
+        const { error } = await supabase
+        .from('profiles')
+        .insert({ id: data.user.id, id_role: '79b48195-372d-41fd-b28a-33cc03586774', email: data.user.email })
     }
 
     return (
