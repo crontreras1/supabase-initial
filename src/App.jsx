@@ -1,11 +1,13 @@
 import { BrowserRouter, useRoutes } from "react-router-dom"
-import Home from "./pages/Home"
-import Register from "./pages/Auth/Register"
-import RegisterForm from "./pages/RegisterForm"
-import Login from "./pages/auth/Login"
-import NotFound from "./pages/Notfound"
+import { Home } from "./pages/Home"
+import { Register } from "./pages/Auth/Register"
+import { RegisterForm } from "./pages/RegisterForm"
+import { Login } from "./pages/auth/Login"
+import { NotFound } from "./pages/Notfound"
 import { useState, useEffect } from "react"
 import { supabase } from "./supabaseClient"
+import { Profile } from "./pages/Profile"
+import { AuthProvider } from "./Auth"
 // import Auth from "./Auth";
 // import Account from "./Account";
 
@@ -29,6 +31,7 @@ function App() {
       { path: '/register', element: <Register />},
       { path: '/register-form', element: <RegisterForm />},
       { path: '/login', element: <Login />},
+      { path: '/profile', element: <Profile />},
       { path: '/*', element: <NotFound />}
     ])
 
@@ -44,7 +47,9 @@ function App() {
     //   )}
     // </div>
     <BrowserRouter>
-      <AppRoutes />
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

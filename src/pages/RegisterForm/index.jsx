@@ -1,9 +1,12 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 
 function RegisterForm() {
     
     const { register, handleSubmit, formState: { errors } } = useForm()
+
+    console.log(errors)
 
     const onSubmit = handleSubmit((data) => console.log(data))
 
@@ -50,16 +53,16 @@ function RegisterForm() {
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     <div className="sm:col-span-3">
-                        <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s)</label>
+                        <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s)</label>
                     
                         <div className="mt-2">
                             <input 
                                 type="text"
-                                name="first-name"
-                                id="first-name"
+                                name="firstName"
+                                id="firstName"
                                 autoComplete="given-name"
-                                { ...register('first-name', {
-                                    require: {
+                                { ...register('firstName', {
+                                    required: {
                                         value: true,
                                         message: 'Nombre es requerido'
                                     }
@@ -67,22 +70,30 @@ function RegisterForm() {
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
 
-                            { errors.first-name?.type === 'require && <sapan>'}
+                            { errors.firstName && <span className="block text-red-600 text-xs">{ errors.firstName.message }</span> }
                         </div>
                     </div>
 
                     <div className="sm:col-span-3">
-                        <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s)</label>
+                        <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s)</label>
                     
                         <div className="mt-2">
                             <input 
                                 type="text"
-                                name="last-name"
-                                id="last-name"
+                                name="lastName"
+                                id="lastName"
                                 autoComplete="family-name"
-                                { ...register('last-name') }
+                                { ...register ('lastName', {
+                                    required: {
+                                        value: true,
+                                        message: 'Apellido es requerido'
+                                    }
+                                }) }
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
+
+                            { errors.lastName && <span className="block text-red-600 text-xs">{ errors.lastName.message }</span> }
+
                         </div>
                     </div>
                 </div>
@@ -171,9 +182,16 @@ function RegisterForm() {
                             type="email"
                             placeholder='example@example.com'
                             autoComplete="email"
-                            { ...register('email') }
+                            { ...register('email', {
+                                required: {
+                                    value: true,
+                                    message: 'Correo Electrónico requerido'
+                                }
+                            }) }
                             className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                          />
+
+                         {errors.email && <span className="block text-red-600 text-xs">{ errors.email.message }</span>}
                     </div>
                 </div>
 
@@ -186,7 +204,12 @@ function RegisterForm() {
                             name="tel"
                             type="tel"
                             maxLength={ 10 }
-                            { ...register('tel') }
+                            { ...register('tel', {
+                                required: {
+                                    value: true,
+                                    message: 'Número de Celular requerido'
+                                }
+                            }) }
                             className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                          />
                     </div>
@@ -305,9 +328,16 @@ function RegisterForm() {
                             placeholder="Ciudad, País"
                             rows={ 1 }
                             defaultValue={ '' }
-                            { ...register('location') }
+                            { ...register('location', {
+                                required: {
+                                    value: true,
+                                    message: 'Ubicación requerida'
+                                }
+                            }) }
                             className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                         />
+
+                        { errors.location && <span className="block text-red-600 text-xs">{ errors.location.message }</span>}
                     </div>
                 </div>
             </div>
@@ -321,30 +351,44 @@ function RegisterForm() {
                     <p className="mb-3 text-sm leading-6 text-gray-600">Valor en pesos colombianos.</p>
 
                     <div className="block sm:flex gap-6">
-                        <label htmlFor="min-price" className="block text-sm font-medium leading-6 text-gray-900">Mínimo:</label>
+                        <label htmlFor="minPrice" className="block text-sm font-medium leading-6 text-gray-900">Mínimo:</label>
 
                         <div className="mt-2">
                             <input
-                                id="min-price"
-                                name="min-price"
-                                type="text"
+                                id="minPrice"
+                                name="minPrice"
+                                type="number"
                                 placeholder='50.000'
-                                { ...register('min-price') }
+                                { ...register('minPrice', {
+                                    required: {
+                                        value: true,
+                                        message: 'Valor mínimo requerido'
+                                    }
+                                }) }
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
+
+                            { errors.minPrice && <span className="block text-red-600 text-xs">{ errors.minPrice.message }</span>}
                         </div>
 
-                        <label htmlFor="max-price" className="block text-sm font-medium leading-6 text-gray-900">Máximo:</label>
+                        <label htmlFor="maxPrice" className="block text-sm font-medium leading-6 text-gray-900">Máximo:</label>
 
                         <div className="mt-2">
                             <input
-                                id="max-price"
-                                name="max-price"
-                                type="text"
+                                id="maxPrice"
+                                name="maxPrice"
+                                type="number"
                                 placeholder='150.000'
-                                { ...register('max-price') }
+                                { ...register('maxPrice', {
+                                    required:{
+                                        value: true,
+                                        message: 'Valor máximo requerido'
+                                    }
+                                }) }
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
+
+                            { errors.maxPrice && <span className="block text-red-600 text-xs">{ errors.maxPrice.message }</span>}
                         </div>
                     </div>
 
@@ -356,7 +400,7 @@ function RegisterForm() {
                             name="free-class"
                             type="checkbox"
                             { ...register('free-class') }                                
-                            className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            className="h-4 w-4 cursor-pointer rounded border-gray-300"
                         />
                     </div>
                 </div>
@@ -366,7 +410,7 @@ function RegisterForm() {
                 <button type="submit" className="flex w-full justify-center rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Iniciar Sesión</button>
             </div> */}
             <div className="mt-6 pb-12 flex items-center justify-end gap-x-6">
-                <button type="button" className="text-sm font-semibold leading-6 text-gray-900">Cancelar</button>
+                <NavLink to="/"className="text-sm font-semibold leading-6 text-gray-900">Cancelar</NavLink>
         
                 <button type="submit" className="w-1/3 rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Terminar</button>
             </div>
@@ -376,4 +420,4 @@ function RegisterForm() {
   )
 }
 
-export default RegisterForm
+export { RegisterForm }
