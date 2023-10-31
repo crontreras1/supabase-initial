@@ -1,46 +1,48 @@
 import React from 'react'
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { NavLink } from 'react-router-dom'
+import { Logout } from '../../../pages/Auth/Logout'
 
 function Navbar () {
-    const routes = []
-    routes.push(
-        {
-            key: 'Home',
-            to: '/',
-            text: 'MI ENTRENADOR PERSONAL',
-            private: false
-        },
-        {
-            key: 'blog',
-            to: '/blog',
-            text: 'Blog',
-            private: false
-        },
-        {
-            key: 'profile',
-            to: '/profile',
-            text: 'Perfil',
-            private: false
-        },
-        {
-            key: 'login',
-            to: '/login',
-            text: 'Entrar',
-            private: false
-        },
-        {
-            key: 'logout',
-            to: '/logout',
-            text: 'Cerrar Sesión',
-            private: false
-        },
-        {
-            key: 'register',
-            to: '/register',
-            text: 'Crear Cuenta',
-            private: false
-        }
-    )
+    // const routes = []
+    // routes.push(
+    //     {
+    //         key: 'Home',
+    //         to: '/',
+    //         text: 'MI ENTRENADOR PERSONAL',
+    //         private: false
+    //     },
+    //     {
+    //         key: 'blog',
+    //         to: '/blog',
+    //         text: 'Blog',
+    //         private: false
+    //     },
+    //     {
+    //         key: 'profile',
+    //         to: '/profile',
+    //         text: 'Perfil',
+    //         private: false
+    //     },
+    //     {
+    //         key: 'login',
+    //         to: '/login',
+    //         text: 'Entrar',
+    //         private: false
+    //     },
+    //     {
+    //         key: 'logout',
+    //         to: '/logout',
+    //         text: 'Cerrar Sesión',
+    //         private: false
+    //     },
+    //     {
+    //         key: 'register',
+    //         to: '/register',
+    //         text: 'Crear Cuenta',
+    //         private: false
+    //     }
+    // )
 
     return (
         <nav className='mt-5 flex justify-between items-center m-0.5'>
@@ -86,11 +88,20 @@ function Navbar () {
                 </li>
                 <li className='m-0.5'>
                     <NavLink
-                        to='/login'
-                        >
-                        <p className=' items-center text-sm font-bold text-gray-900'>Entrar</p>
+                        to='/profile'
+                    >
+                        <UserCircleIcon className="h-7 w-7 text-gray-300" aria-hidden="true" />
                     </NavLink>
                 </li>
+                <li className='m-0.5'>
+                    <NavLink
+                        to='/login'
+                        >
+                        <p className=' items-center text-sm font-bold text-gray-900'>Iniciar Sesión</p>
+                    </NavLink>
+                </li>
+                
+                <Logout />
             </ul>
         </nav>
     )
