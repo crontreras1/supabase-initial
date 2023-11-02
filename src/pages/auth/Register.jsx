@@ -8,9 +8,9 @@ import { useAuth } from '../../Auth'
 function Register() {
     const { register, handleSubmit, formState: { errors }} = useForm()
     const navigate = useNavigate()
-    const auth = useAuth()
+    const { session } = useAuth()
 
-    if (auth) {
+    if (session) {
         return <Navigate to='/profile' />
     }
 
@@ -32,12 +32,13 @@ function Register() {
                 .from('trainers')
                 .insert({id_profile: data.user.id})
             }
-            navigate('/register-form')
+            navigate('/profile')
         } catch (error) {
             console.log(error.message);
         }
 
     }
+    
     // const handleSubmit = async (e) => {
     //     e.preventDefault()
     //     // const email = e.target.email.value

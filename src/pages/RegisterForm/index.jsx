@@ -1,20 +1,45 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useForm } from 'react-hook-form'
-import { NavLink, Navigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../Auth'
+import { supabase } from '../../supabaseClient'
 
 function RegisterForm() {
-    
+    const { session } = useAuth() 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     console.log(errors)
 
-    const onSubmit = handleSubmit((data) => console.log(data))
-    const auth = useAuth()
+    const onSubmit = handleSubmit( async data => {  
+        const dataTrainer = {
+            rol: data.rol,
+            first_name: data.firstName,
+            last_name: data.lastName,
+            genre: data.genre,
+            benefits: data.benefits,
+            biography: data.biography,
+            education: data.education,
+            email: data.email,
+            tel: data.tel,
+            instagram_form: data.instagramForm,
+            facebook_form: data.facebookForm,
+            twitter_form: data.twitterForm,
+            face_to_face_classes: data.faceToFaceClasses,
+            online_classes: data.onlineClasses,
+            tools: data.tools,
+            schedule: data.schedule,
+            location: data.location,
+            min_price: data.minPrice,
+            max_price: data.maxPrice,
+            free_class: data.freeClass,
+        }  
+        const { error } = await supabase
+        .from('trainers')
+        .update(dataTrainer)
+        .eq('id_profile', session.user.id)
+    })
 
-    if (auth) {
-        return <Navigate to='/profile' />
-    }
+ 
 
   return (
     <>
@@ -34,14 +59,15 @@ function RegisterForm() {
                     Cambiar foto de perfil
                 </button>
             </div>
-            
+
             <div className="border-b border-gray-900/10 pb-12">
                 <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">General:</h3>
 
                 <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
 
                     <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">Rol:</label>
-
+                    
+                    {/* // Rol */}
                     <div className="mt-2 w-full">
                         <select
                             id='rol'
@@ -58,11 +84,12 @@ function RegisterForm() {
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    {/* // FirtsName */}
                     <div className="sm:col-span-3">
                         <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s)</label>
-                    
+
                         <div className="mt-2">
-                            <input 
+                            <input
                                 type="text"
                                 name="firstName"
                                 id="firstName"
@@ -80,11 +107,12 @@ function RegisterForm() {
                         </div>
                     </div>
 
+                    {/* // lastName */}
                     <div className="sm:col-span-3">
                         <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s)</label>
-                    
+
                         <div className="mt-2">
-                            <input 
+                            <input
                                 type="text"
                                 name="lastName"
                                 id="lastName"
@@ -106,7 +134,8 @@ function RegisterForm() {
 
                 <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
                     <label htmlFor="genre" className="block text-sm font-medium leading-6 text-gray-900">Genero:</label>
-
+                    
+                    {/* // genre */}
                     <div className="mt-2 w-full">
                         <select
                             id='genre'
@@ -125,7 +154,8 @@ function RegisterForm() {
                     <label htmlFor="benefits" className="block text-sm font-medium leading-6 text-gray-900">Beneficios: (opcional)</label>
 
                     <p className="mb-3 text-sm leading-6 text-gray-600">Cuéntale a tu usuario en max. 120 caracteres, cómo lo puedes ayudar.</p>
-
+                    
+                    {/* // benefits */}
                     <div className="nt-2">
                         <textarea
                             name="benefits"
@@ -143,7 +173,8 @@ function RegisterForm() {
                     <label htmlFor="biography" className="block text-sm font-medium leading-6 text-gray-900">Biografía: (opcional)</label>
 
                     <p className="mb-3 text-sm leading-6 text-gray-600">Cuéntale a tu usuario por qué eres su mejor opción.</p>
-
+                    
+                    {/* // biography */}
                     <div className="nt-2">
                         <textarea
                             name="biography"
@@ -160,7 +191,8 @@ function RegisterForm() {
                     <label htmlFor="education" className="block text-sm font-medium leading-6 text-gray-900">Educación: (opcional)</label>
 
                     <p className="mb-3 text-sm leading-6 text-gray-600">Escribe los título y/o certificados que tienes.</p>
-
+                                
+                    {/* // education */}
                     <div className="mt-2">
                         <textarea
                             name="education"
@@ -172,15 +204,16 @@ function RegisterForm() {
                         />
                     </div>
                 </div>
-                
+
             </div>
-            
+
             <div className="border-b border-gray-900/10 pb-12">
                 <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">Información de contacto:</h3>
 
                 <div className="mt-6 sm:col-span-4">
                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico</label>
-
+                    
+                    {/* // email */}
                     <div className="mt-2">
                         <input
                             id="email"
@@ -203,7 +236,8 @@ function RegisterForm() {
 
                 <div className="mt-6 sm:col-span-4">
                     <label htmlFor="tel" className="block text-sm font-medium leading-6 text-gray-900">Número de Celular:</label>
-
+                    
+                    {/* // tel */}
                     <div className="mt-2">
                         <input
                             id="tel"
@@ -223,43 +257,46 @@ function RegisterForm() {
 
                 <div className="mt-6 sm:col-span-4">
                     <p className="block text-sm font-medium leading-6 text-gray-900">Redes Sociales: (Opcional)</p>
-
+                    
                     <div className="w-1/2">
+                        {/* instagramForm */}
                         <div className="mt-2 flex justify-between">
                             <label htmlFor="social-media-instagram" className="mb-3 text-sm leading-6 text-gray-600">Instagram:</label>
-
+                            
                             <input
-                                id="instagram-form"
-                                name="instagram-form"
+                                id="instagramForm"
+                                name="instagramForm"
                                 type="url"
                                 placeholder="URL"
-                                { ...register('instagram-form') }
+                                { ...register('instagramForm') }
                                 className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
-
+                        
+                        {/* facebookForm */}
                         <div className="mt-2 flex justify-between">
                             <label htmlFor="social-media-facebook" className="mb-3 text-sm leading-6 text-gray-600">Facebook:</label>
 
                             <input
-                                id="facebook-form"
-                                name="facebook-form"
+                                id="facebookForm"
+                                name="facebookForm"
                                 type="url"
                                 placeholder="URL"
-                                { ...register('facebook-form') }
+                                { ...register('facebookForm') }
                                 className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
-
+                        
+                        {/* twitterForm */}
                         <div className="mt-2 flex justify-between">
                             <label htmlFor="social-media-x" className="mb-3 text-sm leading-6 text-gray-600">Twitter:</label>
 
                             <input
-                                id="x-form"
-                                name="x-form"
+                                id="twitterForm"
+                                name="twitterForm"
                                 type="url"
                                 placeholder="URL"
-                                { ...register('twitter-form') }
+                                { ...register('twitterForm') }
                                 className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
@@ -271,33 +308,37 @@ function RegisterForm() {
                 <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">Servicios:</h3>
 
                 <div className="w-1/2">
+                    {/* faceToFaceClasses */}
                     <div className="mt-2 flex justify-between items-end">
                         <label htmlFor="face-to-face-classes">Clases Presenciales:</label>
 
-                        <input 
-                            id="face-to-face-classes"
-                            name="face-to-face-classes"
+                        <input
+                            id="faceToFaceClasses"
+                            name="faceToFaceClasses"
                             type="checkbox"
-                            { ...register('face-to-face-classes') }
+                            { ...register('faceToFaceClasses') }
                             className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                     </div>
 
+                    {/* onlineClasses */}
                     <div className="mt-2 flex justify-between items-end">
                         <label htmlFor="online-classes">Clases Online:</label>
 
-                        <input 
-                            id="online-classes"
-                            name="online-classes"
+                        <input
+                            id="onlineClasses"
+                            name="onlineClasses"
                             type="checkbox"
-                            { ...register('online-classes') }
+                            { ...register('onlineClasses') }
                             className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                     </div>
+
+                    {/* tools */}
                     <div className="mt-2 flex justify-between items-end">
                         <label htmlFor="tools">Material de trabajo:</label>
 
-                        <input 
+                        <input
                             id="tools"
                             name="tools"
                             type="checkbox"
@@ -311,7 +352,8 @@ function RegisterForm() {
                     <label htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Agenda: (opcional)</label>
 
                     <p className="mb-3 text-sm leading-6 text-gray-600">Escribe las horas laborales dentro de la semana.</p>
-
+                    
+                    {/* schedule */}
                     <div className="nt-2">
                         <textarea
                             name="schedule"
@@ -326,7 +368,8 @@ function RegisterForm() {
 
                 <div className=" mt-6 col-span-full">
                     <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">Ubicación:</label>
-
+                    
+                    {/* location */}
                     <div className="nt-2">
                         <textarea
                             name="location"
@@ -358,11 +401,13 @@ function RegisterForm() {
 
                     <div className="block sm:flex gap-6">
                         <label htmlFor="minPrice" className="block text-sm font-medium leading-6 text-gray-900">Mínimo:</label>
-
+                        
+                        {/* minPrice */}
                         <div className="mt-2">
                             <input
                                 id="minPrice"
                                 name="minPrice"
+                                rows={ 1 }
                                 type="number"
                                 placeholder='50.000'
                                 { ...register('minPrice', {
@@ -378,11 +423,13 @@ function RegisterForm() {
                         </div>
 
                         <label htmlFor="maxPrice" className="block text-sm font-medium leading-6 text-gray-900">Máximo:</label>
-
+                        
+                        {/* maxPrice */}
                         <div className="mt-2">
                             <input
                                 id="maxPrice"
                                 name="maxPrice"
+                                rows={ 1 }
                                 type="number"
                                 placeholder='150.000'
                                 { ...register('maxPrice', {
@@ -397,15 +444,15 @@ function RegisterForm() {
                             { errors.maxPrice && <span className="block text-red-600 text-xs">{ errors.maxPrice.message }</span>}
                         </div>
                     </div>
-
+                    {/* freeClass */}
                     <div className="mt-6 flex justify-between items-end w-1/2">
-                        <label htmlFor="free-class">Material de trabajo:</label>
+                        <label htmlFor="free-class">Primera clase gratuita:</label>
 
-                        <input 
-                            id="free-class"
-                            name="free-class"
+                        <input
+                            id="freeClass"
+                            name="freeClass"
                             type="checkbox"
-                            { ...register('free-class') }                                
+                            { ...register('freeClass') }
                             className="h-4 w-4 cursor-pointer rounded border-gray-300"
                         />
                     </div>
@@ -417,8 +464,8 @@ function RegisterForm() {
             </div> */}
             <div className="mt-6 pb-12 flex items-center justify-end gap-x-6">
                 <NavLink to="/"className="text-sm font-semibold leading-6 text-gray-900">Cancelar</NavLink>
-        
-                <button type="submit" className="w-1/3 rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Terminar</button>
+
+                <button type="submit" className="w-1/3 rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Actualizar</button>
             </div>
         </div>
     </form>

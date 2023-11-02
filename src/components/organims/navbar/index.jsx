@@ -6,7 +6,7 @@ import { useAuth } from '../../../Auth'
 // import { supabase } from '../../../supabaseClient';
 
 function Navbar () {
-    const auth = useAuth()
+    const { session } = useAuth()
     // const [session, setSession] = useState(null);
 
     // useEffect(() => {
@@ -29,7 +29,7 @@ function Navbar () {
                 </li>
             </ul>
 
-            { !auth ?  
+            { !session ?  
             <ul className='flex justify-between items-center mr-6 gap-x-5'>
                 <li className='flex w-full justify-center rounded-md bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                     <NavLink to='/register'>

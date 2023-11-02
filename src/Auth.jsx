@@ -26,17 +26,26 @@ function AuthProvider ({ children }) {
 
   return (
     <>
-      <AuthContext.Provider value={ session }>
+      <AuthContext.Provider value={{ session }}>
         { children }
       </AuthContext.Provider>
     </>
   )
 }
 
-function useAuth () {
-  const auth = useContext(AuthContext)
-  return auth
-}
+
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useData must be used within a Provider");
+  }
+  return context;
+};
+
+// function useAuth () {
+//   const auth = useContext(AuthContext)
+//   return auth
+// }
 
 export { AuthProvider, useAuth }
 
