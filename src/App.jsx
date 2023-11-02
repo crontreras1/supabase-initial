@@ -2,28 +2,16 @@ import { BrowserRouter, useRoutes } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Register } from "./pages/Auth/Register"
 import { RegisterForm } from "./pages/RegisterForm"
-import { Login } from "./pages/auth/Login"
+import { Login } from "./pages/Auth/Login"
 import { NotFound } from "./pages/Notfound"
-import { useState, useEffect } from "react"
-import { supabase } from "./supabaseClient"
 import { Profile } from "./pages/Profile"
 import { AuthProvider } from "./Auth"
+// import { useState, useEffect } from "react"
+// import { supabase } from "./supabaseClient"
 // import Auth from "./Auth";
 // import Account from "./Account";
 
 function App() {
-  const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
-
   //Routes
   const AppRoutes = () => {
     let routes = useRoutes ([

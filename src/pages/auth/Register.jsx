@@ -1,12 +1,18 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid' 
 import { useForm } from "react-hook-form"
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate, Navigate } from "react-router-dom"
 import { supabase } from "../../supabaseClient"
+import { useAuth } from '../../Auth'
 // import { createClient } from "@supabase/supabase-js";
 
 function Register() {
     const { register, handleSubmit, formState: { errors }} = useForm()
     const navigate = useNavigate()
+    const auth = useAuth()
+
+    if (auth) {
+        return <Navigate to='/profile' />
+    }
 
     const onSubmit = async formData => {
         try {

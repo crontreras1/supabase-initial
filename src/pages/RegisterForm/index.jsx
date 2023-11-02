@@ -1,6 +1,7 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
+import { useAuth } from '../../Auth'
 
 function RegisterForm() {
     
@@ -9,6 +10,11 @@ function RegisterForm() {
     console.log(errors)
 
     const onSubmit = handleSubmit((data) => console.log(data))
+    const auth = useAuth()
+
+    if (auth) {
+        return <Navigate to='/profile' />
+    }
 
   return (
     <>

@@ -13,7 +13,7 @@ function Login() {
                 email: formData.email,
                 password: formData.password
             })
-            console.log(data);
+            // console.log(data);
             if (error) {
                 throw error
             }
@@ -22,6 +22,7 @@ function Login() {
             console.log(error.message);
             alert('Clave y/o contraseña invalida(s)');
         }
+        console.log(formData.email)
     }
 
     return (
@@ -102,6 +103,31 @@ function Login() {
             </div>
         </div>
         </>
+    )
+}
+
+function Logout() {
+    const navigate = useNavigate()
+
+    const onLogout = async () => {
+        try {
+            const a = await supabase.auth.signOut()
+            navigate('/')
+            console.log(a);
+        } catch (error) {
+            console.log('Huvo un error al cerrar sesión: ', error );
+        }
+    }
+
+    return (
+        <li className='m-0.5'>
+            <NavLink
+                to='/'
+                onClick={ onLogout }
+                >
+                <p className=' items-center text-sm font-bold text-gray-900'>Cerrar Sesión</p>
+            </NavLink>
+        </li>
     )
 }
 
