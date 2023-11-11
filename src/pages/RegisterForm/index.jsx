@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Auth'
-import { supabase } from '../../supabaseClient'
+import { supabase } from '../../supabase/supabaseClient'
 
 function RegisterForm() {
     const [ trainersData, setTrainersData ] = useState({})
+    const navigate = useNavigate()
     const { session } = useAuth() 
-    const { register, handleSubmit, formState: { errors } } = useForm(
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
-    )
+    if (session) {
+        return navigate('/profile')
+    }
 
     // push data to table trainers
     const onSubmit = handleSubmit( async data => {  
@@ -243,6 +246,7 @@ function RegisterForm() {
                                 type="email"
                                 placeholder='example@example.com'
                                 autoComplete="email"
+                                defaultValue={trainersData?.email}
                                 { ...register('email', {
                                     required: {
                                         value: true,
@@ -332,7 +336,7 @@ function RegisterForm() {
                     <div className="w-1/2">
                         {/* faceToFaceClasses */}
                         <div className="mt-2 flex justify-between items-end">
-                            <label htmlFor="face-to-face-classes">Clases Presenciales:</label>
+                            <label htmlFor="face-to-face-classes" className='text-sm leading-6 text-gray-600'>Clases Presenciales:</label>
 
                             <input
                                 id="faceToFaceClasses"
@@ -345,7 +349,7 @@ function RegisterForm() {
 
                         {/* onlineClasses */}
                         <div className="mt-2 flex justify-between items-end">
-                            <label htmlFor="online-classes">Clases Online:</label>
+                            <label htmlFor="online-classes" className='text-sm leading-6 text-gray-600'>Clases Online:</label>
 
                             <input
                                 id="onlineClasses"
@@ -358,7 +362,7 @@ function RegisterForm() {
 
                         {/* tools */}
                         <div className="mt-2 flex justify-between items-end">
-                            <label htmlFor="tools">Material de trabajo:</label>
+                            <label htmlFor="tools" className='text-sm leading-6 text-gray-600'>Material de trabajo:</label>
 
                             <input
                                 id="tools"
@@ -366,6 +370,20 @@ function RegisterForm() {
                                 type="checkbox"
                                 { ...register('tools') }
                                 className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                            />
+                        </div>
+
+                        {/* freeClass */}
+                        <div className="mt-2 flex justify-between items-end
+                        ">
+                            <label htmlFor="free-class" className='text-sm leading-6 text-gray-600'>Primera clase gratuita:</label>
+    
+                            <input
+                                id="freeClass"
+                                name="freeClass"
+                                type="checkbox"
+                                { ...register('freeClass') }
+                                className="h-4 w-4 cursor-pointer rounded border-gray-300"
                             />
                         </div>
                     </div>
@@ -465,18 +483,6 @@ function RegisterForm() {
 
                                 { errors.maxPrice && <span className="block text-red-600 text-xs">{ errors.maxPrice.message }</span>}
                             </div>
-                        </div>
-                        {/* freeClass */}
-                        <div className="mt-6 flex justify-between items-end w-1/2">
-                            <label htmlFor="free-class">Primera clase gratuita:</label>
-
-                            <input
-                                id="freeClass"
-                                name="freeClass"
-                                type="checkbox"
-                                { ...register('freeClass') }
-                                className="h-4 w-4 cursor-pointer rounded border-gray-300"
-                            />
                         </div>
                     </div>
                 </div>

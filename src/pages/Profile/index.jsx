@@ -17,8 +17,6 @@ function Profile() {
             <Navbar />
             
             <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-blue ">PROFILE</h1>
-
-            <RegisterForm />
         </>
     )
 }

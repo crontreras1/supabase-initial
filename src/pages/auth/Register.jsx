@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid' 
 import { useForm } from "react-hook-form"
 import { NavLink, useNavigate, Navigate } from "react-router-dom"
-import { supabase } from "../../supabaseClient"
+import { supabase } from "../../supabase/supabaseClient"
 import { useAuth } from '../../Auth'
 // import { createClient } from "@supabase/supabase-js";
 
@@ -11,7 +11,7 @@ function Register() {
     const { session } = useAuth()
 
     if (session) {
-        return <Navigate to='/profile' />
+        return navigate('/profile')
     }
 
     const onSubmit = async formData => {

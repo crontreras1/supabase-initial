@@ -24,7 +24,7 @@ function Navbar () {
             <ul className='flex justify-between items-center mr-6 gap-x-5'>
                 <li className='flex justify-between'>
                     <NavLink to='/'>
-                        <h1 className='ml-6 text-2xl font-bold leading-9 tracking-tight text-gray-900'>MI ENTRENADOR PERSONAL</h1>
+                        <h1 className='ml-6 text-2xl font-bold leading-9 tracking-tight text-gray-900'>🎖️ FITNESS MODE</h1>
                     </NavLink>
                 </li>
             </ul>
