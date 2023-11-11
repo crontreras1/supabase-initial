@@ -22,7 +22,6 @@ function Login() {
             console.log(error.message);
             alert('Clave y/o contraseña invalida(s)');
         }
-        console.log(formData.email)
     }
 
     return (

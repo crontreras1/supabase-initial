@@ -17,7 +17,7 @@ function App() {
     let routes = useRoutes ([
       { path: '/', element: <Home />},
       { path: '/register', element: <Register />},
-      // { path: '/register-form', element: <RegisterForm />},
+      { path: '/register-form', element: <RegisterForm />},
       { path: '/login', element: <Login />},
       { path: '/profile', element: <Profile />},
       { path: '/*', element: <NotFound />}

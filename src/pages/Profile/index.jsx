@@ -6,7 +6,7 @@ import { RegisterForm } from '../RegisterForm'
 
 function Profile() {
     const { session } = useAuth()
-    console.log(session);
+    // console.log(session);
 
     // if () {
     //     return <Navigate to='/' />
