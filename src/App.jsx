@@ -6,6 +6,7 @@ import { Login } from "./pages/Auth/Login"
 import { NotFound } from "./pages/Notfound"
 import { Profile } from "./pages/Profile"
 import { AuthProvider } from "./Auth"
+import { Trainers } from "./pages/trainers"
 // import { useState, useEffect } from "react"
 // import { supabase } from "./supabaseClient"
 // import Auth from "./Auth";
@@ -20,6 +21,7 @@ function App() {
       { path: '/register-form', element: <RegisterForm />},
       { path: '/login', element: <Login />},
       { path: '/profile', element: <Profile />},
+      { path: '/trainers', element: <Trainers />},
       { path: '/*', element: <NotFound />}
     ])
 

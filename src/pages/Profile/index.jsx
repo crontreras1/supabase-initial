@@ -1,16 +1,15 @@
 import React from 'react'
 import Navbar from '../../components/organims/navbar'
 import { useAuth } from '../../Auth'
-import { Navigate } from 'react-router-dom'
-import { RegisterForm } from '../RegisterForm'
+import { useNavigate } from 'react-router-dom'
 
 function Profile() {
+    const navigate = useNavigate()
     const { session } = useAuth()
-    // console.log(session);
 
-    // if () {
-    //     return <Navigate to='/' />
-    // }
+    if (!session) {
+        navigate('/')
+    }
 
     return (
         <>

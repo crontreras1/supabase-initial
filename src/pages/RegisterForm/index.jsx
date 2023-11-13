@@ -6,9 +6,9 @@ import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
 function RegisterForm() {
-    const [ trainersData, setTrainersData ] = useState({})
     const navigate = useNavigate()
     const { session } = useAuth() 
+    const [ trainersData, setTrainersData ] = useState({})
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     if (session) {

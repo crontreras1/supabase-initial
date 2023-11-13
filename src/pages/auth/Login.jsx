@@ -1,13 +1,13 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid' 
-import { NavLink, Navigate, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { supabase } from '../../supabase/supabaseClient'
 import { useAuth } from '../../Auth'
 
 function Login() {
     const navigate = useNavigate() 
-    
     const { session } = useAuth()
+    
     if (session) {
         return navigate('/profile')
     }
