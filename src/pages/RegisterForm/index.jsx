@@ -12,7 +12,7 @@ function RegisterForm() {
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     if (session) {
-        return navigate('/profile')
+        return navigate('/my-profile')
     }
 
     // push data to table trainers
@@ -45,23 +45,23 @@ function RegisterForm() {
         .eq('id_profile', session.user.id)
     })
 
-    useEffect(() => {
-        async function fetchTrainersData () {  
-            if (session) {
-                const { data, error } = await supabase
-                .from('trainers')
-                .select('*')
-                .eq('id_profile', session.user.id)
-                if (error) {
-                    throw error
-                } 
-                if (data) {
-                    setTrainersData(data[0])
-                }
-            }   
-        }        
-        fetchTrainersData ()
-    }, [session])
+    // useEffect(() => {
+    //     async function fetchTrainersData () {  
+    //         if (session) {
+    //             const { data, error } = await supabase
+    //             .from('trainers')
+    //             .select('*')
+    //             .eq('id_profile', session.user.id)
+    //             if (error) {
+    //                 throw error
+    //             } 
+    //             if (data) {
+    //                 setTrainersData(data[0])
+    //             }
+    //         }   
+    //     }        
+    //     fetchTrainersData ()
+    // }, [session])
 
     return (
         <>
@@ -86,7 +86,6 @@ function RegisterForm() {
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">General:</h3>
 
                     <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
-
                         <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">Rol:</label>
                         
                         {/* // Rol */}
@@ -108,7 +107,7 @@ function RegisterForm() {
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         {/* // FirtsName */}
                         <div className="sm:col-span-3">
-                            <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s)</label>
+                            <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s):</label>
 
                             <div className="mt-2">
                                 <input
@@ -116,7 +115,7 @@ function RegisterForm() {
                                     name="firstName"
                                     id="firstName"
                                     autoComplete="given-name"
-                                    defaultValue={trainersData?.first_name}
+                                    // defaultValue={trainersData?.first_name}
                                     { ...register('firstName', {
                                         required: {
                                             value: true,
@@ -132,7 +131,7 @@ function RegisterForm() {
 
                         {/* // lastName */}
                         <div className="sm:col-span-3">
-                            <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s)</label>
+                            <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s):</label>
 
                             <div className="mt-2">
                                 <input
@@ -195,7 +194,7 @@ function RegisterForm() {
                     </div>
 
                     <div className=" mt-6 col-span-full">
-                        <label htmlFor="biography" className="block text-sm font-medium leading-6 text-gray-900">Biografía: (opcional)</label>
+                        <label htmlFor="biography" className="block text-sm font-medium leading-6 text-gray-900">Acerca de mi: (opcional)</label>
 
                         <p className="mb-3 text-sm leading-6 text-gray-600">Cuéntale a tu usuario por qué eres su mejor opción.</p>
                         
@@ -261,7 +260,9 @@ function RegisterForm() {
                     </div>
 
                     <div className="mt-6 sm:col-span-4">
-                        <label htmlFor="tel" className="block text-sm font-medium leading-6 text-gray-900">Número de Celular:</label>
+                        <label htmlFor="tel" className="block text-sm font-medium leading-6 text-gray-900">WhatsApp: (Opcional)</label>
+
+                        <p className="mb-3 text-sm leading-6 text-gray-600">Añade la extensión dentro del número. Ej: +57310...</p>
                         
                         {/* // tel */}
                         <div className="mt-2">
@@ -269,13 +270,9 @@ function RegisterForm() {
                                 id="tel"
                                 name="tel"
                                 type="tel"
-                                maxLength={ 10 }
-                                { ...register('tel', {
-                                    required: {
-                                        value: true,
-                                        message: 'Número de Celular requerido'
-                                    }
-                                }) }
+                                maxLength={ 13 }
+                                placeholder='+57...'
+                                { ...register('tel') }
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
@@ -493,7 +490,7 @@ function RegisterForm() {
                 <div className="mt-6 pb-12 flex items-center justify-end gap-x-6">
                     <NavLink to="/"className="text-sm font-semibold leading-6 text-gray-900">Cancelar</NavLink>
 
-                    <button type="submit" className="w-1/3 rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Actualizar</button>
+                    <button type="submit" className="w-1/3 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Terminar</button>
                 </div>
             </div>
         </form>

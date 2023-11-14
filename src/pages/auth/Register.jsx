@@ -11,7 +11,7 @@ function Register() {
     const { session } = useAuth()
 
     if (session) {
-        return navigate('/profile')
+        return navigate('/my-profile')
     }
 
     const onSubmit = async formData => {
@@ -32,7 +32,7 @@ function Register() {
                 .from('trainers')
                 .insert({id_profile: data.user.id})
             }
-            navigate('/profile')
+            navigate('/my-profile')
         } catch (error) {
             console.log(error.message);
         }

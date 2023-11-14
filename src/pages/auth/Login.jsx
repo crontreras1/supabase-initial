@@ -9,7 +9,7 @@ function Login() {
     const { session } = useAuth()
     
     if (session) {
-        return navigate('/profile')
+        return navigate('/my-profile')
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -23,7 +23,7 @@ function Login() {
             if (error) {
                 throw error
             }
-            navigate('/profile')
+            navigate('/my-profile')
         } catch (error) {
             console.log(error.message);
             alert('Clave y/o contraseña invalida(s)');
