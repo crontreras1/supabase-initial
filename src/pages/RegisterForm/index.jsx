@@ -41,7 +41,7 @@ function RegisterForm() {
         }  
         const { error } = await supabase
         .from('trainers')
-        .update(dataTrainer)
+        .upsert(dataTrainer)
         .eq('id_profile', session.user.id)
     })
 

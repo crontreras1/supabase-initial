@@ -35,7 +35,7 @@ function Login() {
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="flex gap-6 items-center sm:mx-auto sm:w-full sm:max-w-sm">
                 <NavLink to='/'>
-                    <ArrowLeftIcon class="h-6 w-6 text-gray-500 cursor-pointer" />
+                    <ArrowLeftIcon className="h-6 w-6 text-gray-500 cursor-pointer" />
                 </NavLink>
 
                 <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Iniciar Sesión</h2>

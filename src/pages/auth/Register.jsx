@@ -11,7 +11,7 @@ function Register() {
     const { session } = useAuth()
 
     if (session) {
-        return navigate('/my-profile')
+        return navigate('/register-form')
     }
 
     const onSubmit = async formData => {
