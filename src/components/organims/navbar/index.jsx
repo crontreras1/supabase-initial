@@ -21,7 +21,7 @@ function Navbar () {
     // }, []);
 
     return (
-        <div className='mt-5 mb-10'>
+        <div className='w-full mt-5 mb-10'>
             <nav className='mt-5 flex justify-around items-center sm:justify-between sm:m-0.5'>
                 <ul className='flex justify-between items-center mr-6 gap-x-5'>
                     <li className='flex justify-between'>

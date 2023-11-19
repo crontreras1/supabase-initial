@@ -127,12 +127,13 @@ function Profile () {
                         </div>
 
                         <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                            <button type="button" className=" rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                <div className='flex gap-2 items-center justify-around'>
+                            <button type="button" className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300">
+                                {/* <div className='flex gap-2 items-center justify-around'>
                                     <ChatBubbleOvalLeftEllipsisIcon className='w-6 h-6' />
 
-                                    <p>Contactar</p>
-                                </div>
+                                    <p className=''>Contactar</p>
+                                </div> */}
+                                Contactar
                             </button>
                         </div>
 

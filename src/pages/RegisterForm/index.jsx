@@ -99,7 +99,7 @@ function RegisterForm() {
                             >
                                 <option>Entrenador</option>
                                 <option>Fisioterapeuta</option>
-                                <option>Nutricionista</option>
+                                <option>Nutricionista</option>                  
                             </select>
                         </div>
                     </div>
