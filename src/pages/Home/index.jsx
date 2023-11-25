@@ -83,13 +83,13 @@ function Home () {
           </div>
         </div>
 
-        <div className='px-10'>
+        <div className='px-10 mb-8'>
           <h2 className=" mt-20 mb-10 mx-auto text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
 
-          <p className='text-center md:text-left mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
+          <p className='text-center mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
 
           <div className='flex flex-col items-center gap-2 mb-6npm decoration-violet-50'>
-            <button className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 sm:w-32">Crear Perfil</button>
+            <button className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 sm:w-48">Crear Perfil</button>
 
             <button className="text-sm font-semibold leading-6 text-gray-900">Más información</button>
           </div>
