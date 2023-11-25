@@ -67,7 +67,7 @@ function Profile () {
         <>
             <Navbar />
 
-            <div className="mx-auto space-y-12 max-w-3xl px-6">
+            <div className="mx-auto space-y-12 max-w-full px-6">
                 <div className="md:grid md:grid-cols-3 md:gap-4">
                     <div className='col-span-2 p-4'>
                         <div className="mt-6 col-span-full">

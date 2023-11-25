@@ -10,6 +10,7 @@ function Trainers () {
             const { data, error } = await supabase
             .from('trainers')
             .select()
+            .eq('status', true) 
             if (error) {
                 throw error
             }
@@ -20,14 +21,16 @@ function Trainers () {
         }
         fetchCardsData()
     }, [])
-
+        console.log(trainers)
     return (
         <>
             <Navbar />
             
             <div className="h-full flex px-10 justify-star gap-10 flex-wrap">
                 {
-                    trainers?.map(trainer => {
+                    trainers && 
+                    trainers.map(trainer => {
+
                         return <Card key={ trainer.id } data={ trainer }/>
                         console.log(trainer.last_name);
                     })

@@ -8,7 +8,7 @@ import { supabase } from '../../supabase/supabaseClient'
 
 function MyProfile () {
     const [ trainersData, setTrainersData ] = useState({})
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const navigate = useNavigate()
     const { session } = useAuth()
     
@@ -57,9 +57,12 @@ function MyProfile () {
                 } 
                 if (data) {
                     setTrainersData(data[0])
+                    setValue('firstName', data[0].first_name)
+                    setValue('lastName', data[0].last_name)
                 }
             }   
         }        
+
         fetchTrainersData ()
     }, [session])
 
@@ -82,7 +85,7 @@ function MyProfile () {
                                     id="benefits"
                                     rows={ 3 }
                                     maxLength={ 120 }
-                                    defaultValue={ trainersData?.benefits}
+                                    // defaultValue={ trainersData?.benefits}
                                     { ...register('benefits') }
                                     className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                 />
@@ -233,8 +236,7 @@ function MyProfile () {
                                         name="firstName"
                                         id="firstName"
                                         autoComplete="given-name"
-                                        defaultValue={ trainersData?.first_name }
-                                        { ...register('firstName', 
+                                        { ...register('firstName'
                                         // {
                                         //     required: {
                                         //         value: true,
@@ -259,7 +261,7 @@ function MyProfile () {
                                         name="lastName"
                                         id="lastName"
                                         autoComplete="family-name"
-                                        defaultValue={ trainersData.last_name }
+                                        // defaultValue={ trainersData.last_name }
 
                                         { ...register ('lastName', 
                                         // {
