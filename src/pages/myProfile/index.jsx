@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/organims/navbar'
 import { useForm } from 'react-hook-form'
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon, XCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
@@ -71,7 +71,7 @@ function MyProfile () {
             <Navbar />
 
             <div className="mx-auto space-y-12 max-w-3xl px-6">
-                <form onSubmit={ onSubmit } className="md:grid md:grid-cols-3 md:gap-4">
+                <form onSubmit={ onSubmit } className="flex flex-col-reverse md:grid md:grid-cols-3 md:gap-4">
                     <div className='col-span-2 p-4'>
                         <div className="mt-6 col-span-full">
                             <label htmlFor="benefits" className="block text-sm font-medium leading-6 text-gray-900">Beneficios: (opcional)</label>
@@ -145,7 +145,7 @@ function MyProfile () {
                                         defaultValue={ trainersData?.free_class }
                                         type="checkbox"
                                         { ...register('freeClass') }
-                                        className="h-4 w-4 cursor-pointer rounded border-gray-300"
+                                        className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                     />
                                 </div>
                             </div>
@@ -207,7 +207,7 @@ function MyProfile () {
 
                         <button
                             type="submit"
-                            className="mt-10 w-1/3 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                            className="mt-10 w-full leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-1/3"
                         >
                             Actualizar
                         </button>
@@ -217,12 +217,12 @@ function MyProfile () {
                         <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
                             <UserCircleIcon className="h-28 w-28 text-gray-300" aria-hidden="true" />
 
-                            <button
+                            {/* <button
                                 type="button"
                                 className=" rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                             >
                                 Cambiar foto de perfil
-                            </button>
+                            </button> */}
                         </div>
 
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
@@ -421,6 +421,14 @@ function MyProfile () {
                                     />
                                 </div>
                             </div>
+                        </div>
+
+                        <div className='flex flex-col my-8 gap-y-2'>
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ShoppingCartIcon className='text-white w-5 h-5' /> }Comprar Membresía</button>
+
+                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ChatBubbleOvalLeftEllipsisIcon className='text-white w-5 h-5' /> }Asistencia</button>
+
+                            <button className='rounded-md bg-red-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < XCircleIcon className='text-white w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>

@@ -108,7 +108,7 @@ function Profile () {
                             </div>
 
                             <div className='my-8'>
-                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <HandThumbDownIcon className=' w-5 h-5' /> }Reportar Perfil</button>
+                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <HandThumbDownIcon className='w-5 h-5' /> }Reportar Perfil</button>
                             </div>
                         </div>
                     </div>
