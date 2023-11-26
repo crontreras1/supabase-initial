@@ -74,7 +74,7 @@ function Profile () {
                             {/* // benefits */}
                             <h2 className="mb-3 text-2xl font-bold leading-9 tracking-tight text-gray-900">¡Plan personalizado, motivación constante y metas alcanzables para que te namores del ejercicio y alcances tus objetivos!</h2>
                             
-                            <div className="flex w-full gap-3">
+                            <div className="flex w-full gap-3 flex-wrap">
                                 {/* faceToFaceClasses */}
                                 <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Presencial</span>
 
