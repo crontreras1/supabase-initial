@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/organims/navbar'
 import { useForm } from 'react-hook-form'
-import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, HandThumbDownIcon } from '@heroicons/react/24/solid'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
@@ -16,34 +16,34 @@ function Profile () {
         navigate('/my-profile')
     }
 
-    const onSubmit = handleSubmit( async data => {  
-        const dataTrainer = {
-            rol: data.rol,
-            first_name: data.firstName,
-            last_name: data.lastName,
-            genre: data.genre,
-            benefits: data.benefits,
-            biography: data.biography,
-            education: data.education,
-            email: data.email,
-            tel: data.tel,
-            instagram_form: data.instagramForm,
-            facebook_form: data.facebookForm,
-            twitter_form: data.twitterForm,
-            face_to_face_classes: data.faceToFaceClasses,
-            online_classes: data.onlineClasses,
-            tools: data.tools,
-            schedule: data.schedule,
-            location: data.location,
-            min_price: data.minPrice,
-            max_price: data.maxPrice,
-            free_class: data.freeClass,
-        }  
-        const { error } = await supabase
-        .from('trainers')
-        .update(dataTrainer)
-        .eq('id_profile', session.user.id)
-    })
+    // const onSubmit = handleSubmit( async data => {  
+    //     const dataTrainer = {
+    //         rol: data.rol,
+    //         first_name: data.firstName,
+    //         last_name: data.lastName,
+    //         genre: data.genre,
+    //         benefits: data.benefits,
+    //         biography: data.biography,
+    //         education: data.education,
+    //         email: data.email,
+    //         tel: data.tel,
+    //         instagram_form: data.instagramForm,
+    //         facebook_form: data.facebookForm,
+    //         twitter_form: data.twitterForm,
+    //         face_to_face_classes: data.faceToFaceClasses,
+    //         online_classes: data.onlineClasses,
+    //         tools: data.tools,
+    //         schedule: data.schedule,
+    //         location: data.location,
+    //         min_price: data.minPrice,
+    //         max_price: data.maxPrice,
+    //         free_class: data.freeClass,
+    //     }  
+    //     const { error } = await supabase
+    //     .from('trainers')
+    //     .update(dataTrainer)
+    //     .eq('id_profile', session.user.id)
+    // })
 
     useEffect(() => {
         async function fetchTrainersData () {  
@@ -67,8 +67,8 @@ function Profile () {
         <>
             <Navbar />
 
-            <div className="mx-auto space-y-12 max-w-full px-6">
-                <div className="md:grid md:grid-cols-3 md:gap-4">
+            <div className="space-y-12 max-w-full px-6">
+                <div className=" flex flex-col-reverse md:grid md:grid-cols-3 md:gap-4">
                     <div className='col-span-2 p-4'>
                         <div className="mt-6 col-span-full">
                             {/* // benefits */}
@@ -105,6 +105,10 @@ function Profile () {
                                 <p htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Agenda:</p>
 
                                 <p className="mb-3 text-sm leading-6 text-gray-600">Lunes a Viernes de 5 am a 8pm <br/> Sabados y Domigos de 7 am a 2pm</p>
+                            </div>
+
+                            <div className='my-8'>
+                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <HandThumbDownIcon className=' w-5 h-5' /> }Reportar Perfil</button>
                             </div>
                         </div>
                     </div>
