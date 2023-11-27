@@ -5,6 +5,7 @@ import { supabase } from '../../supabase/supabaseClient'
 
 function Trainers () {
     const [trainers, setTrainers] = useState(null)
+
     useEffect(() => {
         async function fetchCardsData () {
             const { data, error } = await supabase
@@ -17,11 +18,10 @@ function Trainers () {
             if (data) {
                 setTrainers(data)
             }
-            // console.log(data[3].last_name);
         }
         fetchCardsData()
     }, [])
-        console.log(trainers)
+    
     return (
         <>
             <Navbar />
@@ -30,9 +30,7 @@ function Trainers () {
                 {
                     trainers && 
                     trainers.map(trainer => {
-
                         return <Card key={ trainer.id } data={ trainer }/>
-                        console.log(trainer.last_name);
                     })
                 }
             </div>

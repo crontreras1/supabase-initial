@@ -21,9 +21,9 @@ function App() {
       { path: '/register', element: <Register />},
       { path: '/register-form', element: <RegisterForm />},
       { path: '/login', element: <Login />},
-      { path: '/profile', element: <Profile />},
       { path: '/my-profile', element: <MyProfile />},
       { path: '/trainers', element: <Trainers />},
+      { path: '/trainers/profile/:idProfile', element: <Profile />},
       { path: '/*', element: <NotFound />}
     ])
 
