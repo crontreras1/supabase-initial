@@ -1,66 +1,86 @@
-import { UserCircleIcon, Bars3Icon } from '@heroicons/react/24/solid'
-import { NavLink, Navigate } from 'react-router-dom'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { UserCircleIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Logout } from '../../../pages/Auth/Logout'
 import { useAuth } from '../../../Auth'
-// import { useState, useEffect } from 'react'
-// import { supabase } from '../../../supabaseClient';
-
 
 function Navbar () {
+    const [ isMobileMenuOpen, setIsMobileMenuOpen ] = useState(false) 
     const { session } = useAuth()
-    // const [session, setSession] = useState(null);
-
-    // useEffect(() => {
-    //   supabase.auth.getSession().then(({ data: { session } }) => {
-    //     setSession(session);
-    //   });
   
-    //   supabase.auth.onAuthStateChange((_event, session) => {
-    //     setSession(session);
-    //   });
-    // }, []);
+    const handleMobileMenuToggle = () => {setIsMobileMenuOpen(!isMobileMenuOpen)}
 
     return (
         <div className='w-full mt-5 mb-10'>
-            <nav className='mt-5 flex justify-around items-center sm:justify-between sm:m-0.5'>
-                <ul className='flex justify-between items-center mr-6 gap-x-5'>
-                    <li className='flex justify-between'>
-                        <NavLink to='/'>
-                            <h1 className='ml-6 text-xl sm:text-2xl font-bold leading-9 tracking-tight text-gray-900'>🎖️ FITNESS MODE</h1>
-                        </NavLink>
-                    </li>
-                </ul>
+            <nav className='mx-6 mt-5 flex justify-between items-center'>
+                <NavLink to='/'>
+                    <p className='text-xl sm:text-2xl font-bold leading-9 tracking-tight text-gray-900'>🎖️ FITNESS MODE</p>
+                </NavLink>
 
-                {/* <Bars3Icon className='h-6 w-6'/> */}
+                {/* mobile and tablet */}
+                <div className='lg:hidden flex items-center relative'>
+                    <button onClick={ handleMobileMenuToggle }  className=' w-6 h-6'>
+                        { isMobileMenuOpen ? <XMarkIcon /> : <Bars3Icon /> }
+                    </button>
 
-                { !session ?  
-                <ul className='flex justify-between items-center mr-6 gap-x-5'>
-                    <li className='flex w-full justify-center rounded-md bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-                        <NavLink to='/register'>
-                            <p className='text-sm font-medium leading-6 text-white'>Soy Profesional de la Salud</p>
-                        </NavLink>
-                    </li>
+                    {
+                    isMobileMenuOpen && (!session ?  
+                    <ul className='w-64 p-4 flex flex-col items-end gap-4 rounded-md absolute top-8 right-2 bg-white shadow-sm ring-1 ring-inset ring-gray-300'>
+                        <li className='w-full rounded-md bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                            <NavLink to='/register'>
+                                <p className='text-sm font-medium leading-6 text-white'>Soy Profesional de la Salud</p>
+                            </NavLink>
+                        </li>
 
-                    <li className='m-0.5'>
-                        <NavLink to='/login'>
-                            <p className=' items-center text-sm font-bold text-gray-900'>Iniciar Sesión</p>
-                        </NavLink>
-                    </li> 
-                </ul>
-                : 
-                <ul className='flex justify-between items-center mr-6 gap-x-5'>
-                    <Logout /> 
+                        <li className='m-0.5'>
+                            <NavLink to='/login'>
+                                <p className='text-sm font-bold text-gray-900'>Iniciar Sesión</p>
+                            </NavLink>
+                        </li> 
+                    </ul>
+                    : 
+                    <ul className='w-64 p-4 flex flex-col items-end gap-4 rounded-md absolute top-8 right-2 bg-white shadow-sm ring-1 ring-inset ring-gray-300'>
+                        <li className='m-0.5'>
+                            <NavLink to='/profile'>
+                                <UserCircleIcon className="h-10 w-10 text-gray-300" aria-hidden="true" />
+                            </NavLink>
+                        </li> 
 
-                    <li className='m-0.5'>
-                        <NavLink to='/profile'>
-                            <UserCircleIcon className="h-10 w-10 text-gray-300" aria-hidden="true" />
-                        </NavLink>
-                    </li> 
-                </ul>
-                }                
+                        <Logout /> 
+                    </ul>)
+                    }
+                </div>
+
+                <div className='hidden lg:flex '>
+                    {(!session ? 
+                        <ul className='flex justify-between items-center mr-6 gap-x-5'>
+                            <li className='flex w-full justify-center rounded-md bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                <NavLink to='/register'>
+                                    <p className='text-sm font-medium leading-6 text-white'>Soy Profesional de la Salud</p>
+                                </NavLink>
+                            </li>
+
+                            <li className='m-0.5'>
+                                <NavLink to='/login'>
+                                    <p className=' items-center text-sm font-bold text-gray-900'>Iniciar Sesión</p>
+                                </NavLink>
+                            </li> 
+                        </ul>
+                        : 
+                        <ul className='flex justify-between items-center mr-6 gap-x-5'>
+                            <Logout /> 
+
+                            <li className='m-0.5'>
+                                <NavLink to='/profile'>
+                                    <UserCircleIcon className="h-10 w-10 text-gray-300" aria-hidden="true" />
+                                </NavLink>
+                            </li> 
+                        </ul>               
+                    )}
+                </div>
             </nav>
         </div>
     )
 }
 
-export default Navbar
+export { Navbar }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../../components/organims/navbar'
+import { Navbar } from '../../components/organims/navbar'
 import { useForm } from 'react-hook-form'
 import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon, XCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { useNavigate } from 'react-router-dom'
