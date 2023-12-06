@@ -11,7 +11,7 @@ function Trainers () {
             const { data, error } = await supabase
             .from('trainers')
             .select()
-            .eq('status', true) 
+            .eq('status', false) 
             if (error) {
                 throw error
             }

@@ -1,9 +1,8 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid' 
 import { useForm } from "react-hook-form"
-import { NavLink, useNavigate, Navigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { supabase } from "../../supabase/supabaseClient"
 import { useAuth } from '../../Auth'
-// import { createClient } from "@supabase/supabase-js";
 
 function Register() {
     const { register, handleSubmit, formState: { errors }} = useForm()
@@ -30,13 +29,12 @@ function Register() {
                 .insert({ id: data.user.id, id_role: '79b48195-372d-41fd-b28a-33cc03586774', email: data.user.email })
                 await supabase
                 .from('trainers')
-                .insert({id_profile: data.user.id})
+                .insert({ id_profile: data.user.id, email: data.user.email })
             }
-            navigate('/my-profile')
+            navigate('/register-form')
         } catch (error) {
-            console.log(error.message);
+            alert('Cuenta existente', error) 
         }
-
     }
     
     // const handleSubmit = async (e) => {

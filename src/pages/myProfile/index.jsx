@@ -1,43 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import { Navbar } from '../../components/organims/navbar'
-import { useForm } from 'react-hook-form'
-import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon, XCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { Navbar } from '../../components/organims/navbar'
+import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon, XCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
 function MyProfile () {
     const [ trainersData, setTrainersData ] = useState({})
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
-    const navigate = useNavigate()
     const { session } = useAuth()
+    const navigate = useNavigate()
     
     if (!session) {
         navigate('/')
     }
 
+// push data to table trainers
     const onSubmit = handleSubmit( async data => {  
         const dataTrainer = {
-            rol: data.rol,
-            first_name: data.firstName,
-            last_name: data.lastName,
-            genre: data.genre,
+            // avatar: avatar,
             benefits: data.benefits,
             biography: data.biography,
             education: data.education,
             email: data.email,
-            tel: data.tel,
-            instagram_form: data.instagramForm,
-            facebook_form: data.facebookForm,
-            twitter_form: data.twitterForm,
             face_to_face_classes: data.faceToFaceClasses,
-            online_classes: data.onlineClasses,
-            tools: data.tools,
-            schedule: data.schedule,
-            location: data.location,
-            min_price: data.minPrice,
-            max_price: data.maxPrice,
+            facebook_form: data.facebookForm,
+            first_name: data.firstName,
             free_class: data.freeClass,
+            genre: data.genre,
+            instagram_form: data.instagramForm,
+            last_name: data.lastName,
+            location: data.location,
+            max_price: data.maxPrice,
+            min_price: data.minPrice,
+            online_classes: data.onlineClasses,
+            rol: data.rol,
+            schedule: data.schedule,
+            tel: data.tel,
+            tools: data.tools,
+            twitter_form: data.twitterForm,
         }  
         const { error } = await supabase
         .from('trainers')
@@ -57,12 +59,29 @@ function MyProfile () {
                 } 
                 if (data) {
                     setTrainersData(data[0])
+                    setValue('benefits', data[0].benefits)
+                    setValue('biography', data[0].biography) 
+                    setValue('education', data[0].education) 
+                    setValue('email', data[0].email) 
+                    setValue('faceToFaceClasses', data[0].face_to_face_classes) 
+                    setValue('facebookForm', data[0].facebook_form) 
                     setValue('firstName', data[0].first_name)
-                    setValue('lastName', data[0].last_name)
+                    setValue('freeClass', data[0].free_class) 
+                    setValue('genre', data[0].genre) 
+                    setValue('instagramForm', data[0].instagram_form) 
+                    setValue('lastName', data[0].last_name) 
+                    setValue('location', data[0].location) 
+                    setValue('maxPrice', data[0].max_price) 
+                    setValue('minPrice', data[0].min_price) 
+                    setValue('onlineClasses', data[0].online_classes) 
+                    setValue('rol', data[0].rol) 
+                    setValue('schedule', data[0].schedule) 
+                    setValue('tel', data[0].tel) 
+                    setValue('tools', data[0].tools) 
+                    setValue('twitterForm', data[0].twitter_form) 
                 }
             }   
         }        
-
         fetchTrainersData ()
     }, [session])
 
@@ -99,7 +118,7 @@ function MyProfile () {
                                     <input
                                         id="faceToFaceClasses"
                                         name="faceToFaceClasses"
-                                        defaultValue={ trainersData?.face_to_face_classes}
+                                        // defaultValue={ trainersData?.face_to_face_classes}
                                         type="checkbox"
                                         { ...register('faceToFaceClasses') }
                                         className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -113,7 +132,7 @@ function MyProfile () {
                                     <input
                                         id="onlineClasses"
                                         name="onlineClasses"
-                                        defaultValue={ trainersData?.online_classes}
+                                        // defaultValue={ trainersData?.online_classes}
                                         type="checkbox"
                                         { ...register('onlineClasses') }
                                         className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -127,7 +146,7 @@ function MyProfile () {
                                     <input
                                         id="tools"
                                         name="tools"
-                                        defaultValue={ trainersData?.tools }
+                                        // defaultValue={ trainersData?.tools }
                                         type="checkbox"
                                         { ...register('tools') }
                                         className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -142,7 +161,7 @@ function MyProfile () {
                                     <input
                                         id="freeClass"
                                         name="freeClass"
-                                        defaultValue={ trainersData?.free_class }
+                                        // defaultValue={ trainersData?.free_class }
                                         type="checkbox"
                                         { ...register('freeClass') }
                                         className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
@@ -161,7 +180,7 @@ function MyProfile () {
                                         name="biography"
                                         id="biography"
                                         rows={ 10 }
-                                        defaultValue={ trainersData?.biography }
+                                        // defaultValue={ trainersData?.biography }
                                         { ...register('biography') }
                                         className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -179,7 +198,7 @@ function MyProfile () {
                                         name="education"
                                         id="education"
                                         rows={ 10 }
-                                        defaultValue={ trainersData?.education }
+                                        // defaultValue={ trainersData?.education }
                                         { ...register('education') }
                                         className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -197,7 +216,7 @@ function MyProfile () {
                                         name="schedule"
                                         id="schedule"
                                         rows={ 10 }
-                                        defaultValue={ trainersData?.schedule }
+                                        // defaultValue={ trainersData?.schedule }
                                         { ...register('schedule') }
                                         className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -236,14 +255,7 @@ function MyProfile () {
                                         name="firstName"
                                         id="firstName"
                                         autoComplete="given-name"
-                                        { ...register('firstName'
-                                        // {
-                                        //     required: {
-                                        //         value: true,
-                                        //         message: 'Nombre es requerido'
-                                        //     }
-                                        // }
-                                        ) }
+                                        { ...register('firstName') }
                                         className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
 
@@ -288,7 +300,7 @@ function MyProfile () {
                                 <select
                                     id='rol'
                                     name='rol'
-                                    defaultValue={ trainersData?.rol }
+                                    // defaultValue={ trainersData?.rol }
                                     autoComplete='rol-name'
                                     { ...register('rol') }
                                     className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6 cursor-pointer'
@@ -309,7 +321,7 @@ function MyProfile () {
                                     id="minPrice"
                                     name="minPrice"
                                     rows={ 1 }
-                                    defaultValue={ trainersData?.min_price }
+                                    // defaultValue={ trainersData?.min_price }
                                     type="number"
                                     placeholder='50.000'
                                     { ...register('minPrice', 
@@ -334,7 +346,7 @@ function MyProfile () {
                                     id="maxPrice"
                                     name="maxPrice"
                                     rows={ 1 }
-                                    defaultValue={ trainersData?.max_price }
+                                    // defaultValue={ trainersData?.max_price }
                                     type="number"
                                     placeholder='150.000'
                                     { ...register('maxPrice', 
@@ -362,7 +374,7 @@ function MyProfile () {
                                 <input
                                     id="tel"
                                     name="tel"
-                                    defaultValue={ trainersData?.tel }
+                                    // defaultValue={ trainersData?.tel }
                                     type="tel"
                                     maxLength={ 13 }
                                     placeholder='+57...'
@@ -383,9 +395,9 @@ function MyProfile () {
                                     <input
                                         id="instagramForm"
                                         name="instagramForm"
-                                    defaultValue={ trainersData?.instagram_form }
-                                    type="url"
-                                        placeholder="URL"
+                                    // defaultValue={ trainersData?.instagram_form }
+                                        type="url"
+                                        placeholder="https://www..."
                                         { ...register('instagramForm') }
                                         className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -398,9 +410,9 @@ function MyProfile () {
                                     <input
                                         id="facebookForm"
                                         name="facebookForm"
-                                    defaultValue={ trainersData?.facebook_form }
+                                    // defaultValue={ trainersData?.facebook_form }
                                     type="url"
-                                        placeholder="URL"
+                                        placeholder="https://www..."
                                         { ...register('facebookForm') }
                                         className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -413,9 +425,9 @@ function MyProfile () {
                                     <input
                                         id="twitterForm"
                                         name="twitterForm"
-                                        defaultValue={ trainersData?.twitter_form }
+                                        // defaultValue={ trainersData?.twitter_form }
                                         type="url"
-                                        placeholder="URL"
+                                        placeholder="https://www..."
                                         { ...register('twitterForm') }
                                         className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
@@ -424,7 +436,7 @@ function MyProfile () {
                         </div>
 
                         <div className='flex flex-col my-8 gap-y-2'>
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ShoppingCartIcon className='text-white w-5 h-5' /> }Comprar Membresía</button>
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ShoppingCartIcon className='text-white w-5 h-5' /> }Actualizar Plan</button>
 
                             <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ChatBubbleOvalLeftEllipsisIcon className='text-white w-5 h-5' /> }Asistencia</button>
 

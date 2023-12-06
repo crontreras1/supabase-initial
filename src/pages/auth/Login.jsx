@@ -5,6 +5,7 @@ import { supabase } from '../../supabase/supabaseClient'
 import { useAuth } from '../../Auth'
 
 function Login() {
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate() 
     const { session } = useAuth()
     
@@ -12,7 +13,6 @@ function Login() {
         return navigate('/my-profile')
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = async formData => {
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
@@ -42,7 +42,7 @@ function Login() {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                <form className="space-y-6" onSubmit={ handleSubmit(onSubmit) }>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico</label>
                         
@@ -108,31 +108,6 @@ function Login() {
             </div>
         </div>
         </>
-    )
-}
-
-function Logout() {
-    const navigate = useNavigate()
-
-    const onLogout = async () => {
-        try {
-            const a = await supabase.auth.signOut()
-            navigate('/')
-            console.log(a);
-        } catch (error) {
-            console.log('Huvo un error al cerrar sesión: ', error );
-        }
-    }
-
-    return (
-        <li className='m-0.5'>
-            <NavLink
-                to='/'
-                onClick={ onLogout }
-                >
-                <p className=' items-center text-sm font-bold text-gray-900'>Cerrar Sesión</p>
-            </NavLink>
-        </li>
     )
 }
 
