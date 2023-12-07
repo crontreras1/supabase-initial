@@ -1,6 +1,6 @@
-import nutritionImage from '../../../assets/category-nutrition.jpg'
-import trainingImage from '../../../assets/category-personal-trainer.jpg'
-import physiotherapyImage from '../../../assets/category-physiotherapy.jpg'
+import nutritionImage from '../../../assets/images/category-nutrition.jpg'
+import trainingImage from '../../../assets/images/category-personal-trainer.jpg'
+import physiotherapyImage from '../../../assets/images/category-physiotherapy.jpg'
 
 function CategoryCard ({ img, name}) {
     const categoryImg = {

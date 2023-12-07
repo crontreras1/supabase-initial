@@ -1,4 +1,4 @@
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { RxAvatar } from "react-icons/rx"
 import { Link } from 'react-router-dom'
 
 
@@ -14,7 +14,7 @@ function Card (data) {
                             src={ data.data.avatar }
                             alt="" 
                             className='w-full h-full rounded-xl object-cover'
-                        /> : < UserCircleIcon className='w-full h-full object-cover' /> }
+                        /> : < RxAvatar className='w-full h-full object-cover' /> }
                     </figure>
 
                     { data.data.rol ? <p className="text-xs absolute left-2 bottom-2 font-medium leading-6 rounded-md bg-gray-50 px-2 py-0 text-gray-600 ring-1 ring-inset ring-gray-500/10">{ data.data.rol }</p> : <span className='hidden'></span> }

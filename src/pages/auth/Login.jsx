@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/solid' 
+import { FaArrowLeft } from "react-icons/fa";
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { supabase } from '../../supabase/supabaseClient'
@@ -35,7 +35,7 @@ function Login() {
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="flex gap-6 items-center sm:mx-auto sm:w-full sm:max-w-sm">
                 <NavLink to='/'>
-                    <ArrowLeftIcon className="h-6 w-6 text-gray-500 cursor-pointer" />
+                    <FaArrowLeft className="h-6 w-6 text-gray-500 cursor-pointer" />
                 </NavLink>
 
                 <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Iniciar Sesión</h2>

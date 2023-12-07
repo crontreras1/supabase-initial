@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Navbar } from '../../components/organims/navbar'
-// import { useForm } from 'react-hook-form'
-import { UserCircleIcon, HandThumbDownIcon } from '@heroicons/react/24/solid'
-import { useNavigate, useParams } from 'react-router-dom'
+import { RxAvatar } from "react-icons/rx";
+import { MdOutlineReport } from "react-icons/md";
+import { FaFacebookSquare } from "react-icons/fa";
+import { SiInstagram } from "react-icons/si";
+import { RiTwitterXFill } from "react-icons/ri";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
@@ -108,14 +111,14 @@ function Profile () {
                             </div>
 
                             <div className='my-8'>
-                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <HandThumbDownIcon className='w-5 h-5' /> }Reportar Perfil</button>
+                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</button>
                             </div>
                         </div>
                     </div>
 
                     <div className='col-span-1 p-4'>
                         <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
-                            <UserCircleIcon className="h-28 w-28 text-gray-300" aria-hidden="true" />                                                                                                       
+                            <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />                                                                                                       
                         </div>
 
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
@@ -131,7 +134,7 @@ function Profile () {
                         </div>
 
                         <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                            <button type="button" className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300">
+                            <button type="button" className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3">
                                 {/* <div className='flex gap-2 items-center justify-around'>
                                     <ChatBubbleOvalLeftEllipsisIcon className='w-6 h-6' />
 
@@ -143,11 +146,19 @@ function Profile () {
 
                         <div className="mt-6 flex justify-center gap-8 sm:grid-cols-6">
                                 {/* instagramForm */}
-                                <p>F</p>
+                                <a href={ profileData.instagram_form } target='_blank'>
+                                    <SiInstagram className='w-6 h-6 cursor-pointer' />
+                                </a>
+
                                 {/* facebookForm */}
-                                <p>I</p>
+                                <a href={ profileData.facebook_form } target='_blank'>
+                                    <FaFacebookSquare className='w-6 h-6 cursor-pointer' />
+                                </a>
+
                                 {/* twitterForm */}
-                                <p>X</p>
+                                <a href={ profileData.twitter_form } target='_blank'>
+                                    <RiTwitterXFill className='w-6 h-6 cursor-pointer' />
+                                </a>
                         </div>
                     </div>
                 </div>

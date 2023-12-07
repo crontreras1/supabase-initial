@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { RxAvatar  } from "react-icons/rx";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
@@ -95,7 +95,7 @@ function RegisterForm() {
             <div className="mx-auto space-y-12 max-w-2xl px-6">
 {/* avatar */}
                 <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
-                    <UserCircleIcon className="h-28 w-28 text-gray-300" aria-hidden="true" />
+                    <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />
 
                     <input
                         id="avatar"

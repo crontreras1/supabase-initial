@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Navbar } from '../../components/organims/navbar'
-import { UserCircleIcon, ChatBubbleOvalLeftEllipsisIcon, XCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { RxAvatar } from "react-icons/rx"
+import { IoChatboxOutline } from "react-icons/io5"
+import { MdDeleteOutline } from "react-icons/md";
+import { FaCheck } from "react-icons/fa";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
@@ -234,7 +237,7 @@ function MyProfile () {
 
                     <div className='col-span-1 p-4'>
                         <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
-                            <UserCircleIcon className="h-28 w-28 text-gray-300" aria-hidden="true" />
+                            <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />
 
                             {/* <button
                                 type="button"
@@ -436,11 +439,11 @@ function MyProfile () {
                         </div>
 
                         <div className='flex flex-col my-8 gap-y-2'>
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ShoppingCartIcon className='text-white w-5 h-5' /> }Actualizar Plan</button>
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < FaCheck className='text-white w-5 h-5' /> }Actualizar Plan</button>
 
-                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < ChatBubbleOvalLeftEllipsisIcon className='text-white w-5 h-5' /> }Asistencia</button>
+                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < IoChatboxOutline className='text-white w-5 h-5' /> }Asistencia</button>
 
-                            <button className='rounded-md bg-red-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < XCircleIcon className='text-white w-5 h-5' /> }Eliminar perfil</button>
+                            <button className='rounded-md bg-red-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < MdDeleteOutline className='text-white w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>
