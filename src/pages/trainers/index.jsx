@@ -26,7 +26,7 @@ function Trainers () {
         <>
             <Navbar />
             
-            <div className="h-full flex px-10 justify-star gap-10 flex-wrap">
+            <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
                 {
                     trainers && 
                     trainers.map(trainer => {
