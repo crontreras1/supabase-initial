@@ -225,6 +225,29 @@ function MyProfile () {
                                     />
                                 </div>
                             </div>
+
+                            <div className=" mt-6 col-span-full">
+                                <label htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico:</label>
+                                
+                                {/* email */}
+                                <div className="nt-2">
+                                    <textarea
+                                        name="email"
+                                        id="email"
+                                        type='email'
+                                        placeholder='example@example.com'
+                                        autoComplete="email"
+                                        rows={1}
+                                        { ...register('email', {
+                                            required: {
+                                                value: true,
+                                                message: 'Correo Electrónico requerido'
+                                        }
+                                    }) }
+                                        className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                                    />
+                                </div>
+                            </div>
                         </div>
 
                         <button
@@ -439,11 +462,11 @@ function MyProfile () {
                         </div>
 
                         <div className='flex flex-col my-8 gap-y-2'>
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < FaCheck className='text-white w-5 h-5' /> }Actualizar Plan</button>
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-sky-500 w-full flex justify-center items-center md:w-full gap-2'>{ < FaCheck className='text-white w-5 h-5' /> }Actualizar Plan</button>
 
-                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < IoChatboxOutline className='text-white w-5 h-5' /> }Asistencia</button>
+                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-lime-500 w-full flex justify-center items-center md:w-full gap-2'>{ < IoChatboxOutline className='text-white w-5 h-5' /> }Asistencia</button>
 
-                            <button className='rounded-md bg-red-800 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ < MdDeleteOutline className='text-white w-5 h-5' /> }Eliminar perfil</button>
+                            <button className='rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500 w-full flex justify-center items-center md:w-full gap-2'>{ < MdDeleteOutline className='text-white w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>

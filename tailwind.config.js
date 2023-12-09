@@ -9,7 +9,7 @@ export default {
       colors: {
         focus: '#ef4444',
         hoverFocus: '#f87171',
-        buttonLink: '#38bdf8',
+        buttonLink: '#0284c7',
         hoverButtonLink: '#7dd3fc'
       }
     },

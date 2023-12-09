@@ -10,15 +10,14 @@ import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
 function Profile () {
-    const [ profileData, setProfileData ] = useState(null)
-    // const { register, handleSubmit, formState: { errors } } = useForm()
+    const [ profileData, setProfileData ] = useState()
     const navigate = useNavigate()
     const { session } = useAuth()
     const { idProfile } = useParams()
     
-    if (session) {
-        navigate('/my-profile')
-    }
+    // if (session) {
+    //     navigate('/my-profile')
+    // }
 
     // const onSubmit = handleSubmit( async data => {  
     //     const dataTrainer = {
@@ -61,11 +60,10 @@ function Profile () {
             if (data) {
                 setProfileData(data[0])
             }
-            console.log(data);
         }        
         fetchProfileData()
     }, [idProfile])
-
+    
     return (
         <>
             <Navbar />
@@ -76,19 +74,18 @@ function Profile () {
                         <div className="mt-6 col-span-full">
                             {/* // benefits */}
                             <h2 className="mb-3 text-2xl font-bold leading-9 tracking-tight text-gray-900">{ profileData && profileData.benefits }</h2>
-                            
                             <div className="flex w-full gap-3 flex-wrap">
                                 {/* faceToFaceClasses */}
-                                <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Presencial</span>
+                                { profileData && profileData.face_to_face_classes ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Presencial</span> : <span className='hidden'></span> }
 
                                 {/* onlineClasses */}
-                                <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Online</span>
+                                { profileData && profileData.online_classes ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Online</span> : <span className='hidden'></span> }
 
                                 {/* tools */}
-                                <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Material de trabajo</span>
+                                { profileData && profileData.tools ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Material de trabajo</span> : <span className='hidden'></span> }
 
                                 {/* freeClass */}
-                                <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">1ra clase gratis</span>
+                                { profileData && profileData.free_class ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">1ra clase gratis</span> : <span className='hidden'></span> }
                             </div>
 
                             <div className=" mt-6 col-span-full">
@@ -111,7 +108,7 @@ function Profile () {
                             </div>
 
                             <div className='my-8'>
-                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center md:w-full gap-2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</button>
+                                <button className='rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500 w-full flex justify-center items-center gap-2 sm:w-1/2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</button>
                             </div>
                         </div>
                     </div>
@@ -146,17 +143,17 @@ function Profile () {
 
                         <div className="mt-6 flex justify-center gap-8 sm:grid-cols-6">
                                 {/* instagramForm */}
-                                <a href={ profileData.instagram_form } target='_blank'>
+                                <a href={ profileData && profileData.instagram_form } target='_blank'>
                                     <SiInstagram className='w-6 h-6 cursor-pointer' />
                                 </a>
 
                                 {/* facebookForm */}
-                                <a href={ profileData.facebook_form } target='_blank'>
+                                <a href={ profileData && profileData.facebook_form } target='_blank'>
                                     <FaFacebookSquare className='w-6 h-6 cursor-pointer' />
                                 </a>
 
                                 {/* twitterForm */}
-                                <a href={ profileData.twitter_form } target='_blank'>
+                                <a href={ profileData && profileData.twitter_form } target='_blank'>
                                     <RiTwitterXFill className='w-6 h-6 cursor-pointer' />
                                 </a>
                         </div>

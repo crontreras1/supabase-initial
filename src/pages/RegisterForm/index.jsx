@@ -264,7 +264,7 @@ function RegisterForm() {
 {/* // email */}
 
                     <div className="mt-6 sm:col-span-4">
-                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico</label>
+                        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">   </label>
                         
                         <div className="mt-2">
                             <input
