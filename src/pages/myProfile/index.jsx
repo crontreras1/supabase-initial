@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Navbar } from '../../components/organims/navbar'
 import { RxAvatar } from "react-icons/rx"
-import { IoChatboxOutline } from "react-icons/io5"
+import { FaWhatsapp } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { FaCheck } from "react-icons/fa";
+import { IoMdHappy } from "react-icons/io";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 
@@ -62,6 +62,7 @@ function MyProfile () {
                 } 
                 if (data) {
                     setTrainersData(data[0])
+                    // setValue('avatar', data[0].avatar)
                     setValue('benefits', data[0].benefits)
                     setValue('biography', data[0].biography) 
                     setValue('education', data[0].education) 
@@ -100,7 +101,7 @@ function MyProfile () {
 
                             <p className="mb-3 text-sm leading-6 text-gray-600">Cuéntale a tu usuario en max. 120 caracteres, cómo lo puedes ayudar.</p>
                             
-                            {/* // benefits */}
+{/* // benefits */}
                             <div className="nt-2">
                                 <textarea
                                     name="benefits"
@@ -114,7 +115,7 @@ function MyProfile () {
                             </div>
 
                             <div className="w-1/2">
-                                {/* faceToFaceClasses */}
+{/* faceToFaceClasses */}
                                 <div className="mt-2 flex justify-between items-end">
                                     <label htmlFor="face-to-face-classes" className='text-sm leading-6 text-gray-600'>Clases Presenciales:</label>
 
@@ -128,7 +129,7 @@ function MyProfile () {
                                     />
                                 </div>
 
-                                {/* onlineClasses */}
+{/* onlineClasses */}
                                 <div className="mt-2 flex justify-between items-end">
                                     <label htmlFor="online-classes" className='text-sm leading-6 text-gray-600'>Clases Online:</label>
 
@@ -142,7 +143,7 @@ function MyProfile () {
                                     />
                                 </div>
 
-                                {/* tools */}
+{/* tools */}
                                 <div className="mt-2 flex justify-between items-end">
                                     <label htmlFor="tools" className='text-sm leading-6 text-gray-600'>Material de trabajo:</label>
 
@@ -156,7 +157,7 @@ function MyProfile () {
                                     />
                                 </div>
 
-                                {/* freeClass */}
+{/* freeClass */}
                                 <div className="mt-2 flex justify-between items-end
                                 ">
                                     <label htmlFor="free-class" className='text-sm leading-6 text-gray-600'>Primera clase gratuita:</label>
@@ -172,12 +173,12 @@ function MyProfile () {
                                 </div>
                             </div>
 
+{/* // biography */}
                             <div className=" mt-6 col-span-full">
                                 <label htmlFor="biography" className="block text-sm font-medium leading-6 text-gray-900">Acerca de mi: (opcional)</label>
 
                                 <p className="mb-3 text-sm leading-6 text-gray-600">Cuéntale a tu usuario por qué eres su mejor opción.</p>
                                 
-                                {/* // biography */}
                                 <div className="nt-2">
                                     <textarea
                                         name="biography"
@@ -190,12 +191,12 @@ function MyProfile () {
                                 </div>
                             </div>
 
+{/* // education */}
                             <div className=" mt-6 col-span-full">
                                 <label htmlFor="education" className="block text-sm font-medium leading-6 text-gray-900">Educación: (opcional)</label>
 
                                 <p className="mb-3 text-sm leading-6 text-gray-600">Escribe los título y/o certificados que tienes.</p>
                                             
-                                {/* // education */}
                                 <div className="mt-2">
                                     <textarea
                                         name="education"
@@ -208,12 +209,12 @@ function MyProfile () {
                                 </div>
                             </div>
 
+{/* schedule */}
                             <div className=" mt-6 col-span-full">
                                 <label htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Agenda: (opcional)</label>
 
                                 <p className="mb-3 text-sm leading-6 text-gray-600">Escribe las horas laborales dentro de la semana.</p>
                                 
-                                {/* schedule */}
                                 <div className="nt-2">
                                     <textarea
                                         name="schedule"
@@ -226,10 +227,10 @@ function MyProfile () {
                                 </div>
                             </div>
 
+{/* email */}
                             <div className=" mt-6 col-span-full">
                                 <label htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico:</label>
                                 
-                                {/* email */}
                                 <div className="nt-2">
                                     <textarea
                                         name="email"
@@ -250,6 +251,47 @@ function MyProfile () {
                             </div>
                         </div>
 
+{/* // genre */}
+                        <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
+                            <label htmlFor="genre" className="block text-sm font-medium leading-6 text-gray-900">Genero:</label>
+                            
+                            <div className="mt-2 w-full">
+                                <select
+                                    id='genre'
+                                    name='genre'
+                                    autoComplete='genre-name'
+                                    { ...register('genre') }
+                                    className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6 cursor-pointer'
+                                >
+                                    <option>Seleccionar</option>
+                                    <option>Masculino</option>
+                                    <option>Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+{/* location */}
+                        <div className=" mt-6 col-span-full">
+                            <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">Ubicación:</label>
+                            
+                            <div className="nt-2">
+                                <textarea
+                                    name="location"
+                                    id="location"
+                                    placeholder="Ciudad, País"
+                                    rows={ 1 }
+                                    { ...register('location', {
+                                        required: {
+                                            value: true,
+                                            message: 'Ubicación requerida'
+                                        }
+                                    }) }
+                                    className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                                />
+
+                                { errors.location && <span className="block text-red-600 text-xs">{ errors.location.message }</span>}
+                            </div>
+                        </div>
+
                         <button
                             type="submit"
                             className="mt-10 w-full leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-1/3"
@@ -259,19 +301,22 @@ function MyProfile () {
                     </div>
 
                     <div className='col-span-1 p-4'>
-                        <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
+{/* avatar */}
+                        <div className="w-full mt-2 flex flex-col items-center justify-center gap-x-3">
                             <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />
 
-                            {/* <button
-                                type="button"
-                                className=" rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                            >
-                                Cambiar foto de perfil
-                            </button> */}
+                            <input
+                                id="avatar"
+                                name="avatar"
+                                type="url"
+                                placeholder='https://www...'
+                                { ...register('avatar') }
+                                className="w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                            />
                         </div>
 
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
-                            {/* // FirtsName */}
+{/* // FirtsName */}
                             <div className="sm:col-span-3">
                                 <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s):</label>
 
@@ -289,7 +334,7 @@ function MyProfile () {
                                 </div>
                             </div>
 
-                            {/* // lastName */}
+{/* // lastName */}
                             <div className="sm:col-span-3">
                                 <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s):</label>
 
@@ -318,10 +363,10 @@ function MyProfile () {
                             </div>
                         </div>
 
+{/* // Rol */}
                         <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
                             <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">Rol:</label>
                             
-                            {/* // Rol */}
                             <div className="mt-2 w-full">
                                 <select
                                     id='rol'
@@ -338,10 +383,10 @@ function MyProfile () {
                             </div>
                         </div>
 
+{/* minPrice */}
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
                             <label htmlFor="minPrice" className="block text-sm font-medium leading-6 text-gray-900">Mínimo:</label>
                             
-                            {/* minPrice */}
                             <div className="mt-2">
                                 <input
                                     id="minPrice"
@@ -364,9 +409,9 @@ function MyProfile () {
                                 { errors.minPrice && <span className="block text-red-600 text-xs">{ errors.minPrice.message }</span>}
                             </div>
 
+{/* maxPrice */}
                             <label htmlFor="maxPrice" className="block text-sm font-medium leading-6 text-gray-900">Máximo:</label>
                             
-                            {/* maxPrice */}
                             <div className="mt-2">
                                 <input
                                     id="maxPrice"
@@ -390,12 +435,12 @@ function MyProfile () {
                             </div>
                         </div>
 
+{/* // tel */}
                         <div className="mt-6 sm:col-span-4">
                             <label htmlFor="tel" className="block text-sm font-medium leading-6 text-gray-900">WhatsApp: (Opcional)</label>
 
                             <p className="mb-3 text-sm leading-6 text-gray-600">Añade la extensión dentro del número. Ej: +57310...</p>
                             
-                            {/* // tel */}
                             <div className="mt-2">
                                 <input
                                     id="tel"
@@ -413,8 +458,8 @@ function MyProfile () {
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
                             <p className="block text-sm font-medium leading-6 text-gray-900">Redes Sociales: (Opcional)</p>
                             
-                            <div className="w-1/2">
-                                {/* instagramForm */}
+                            <div className="w-full">
+{/* instagramForm */}
                                 <div className="mt-2">
                                     <label htmlFor="social-media-instagram" className="mb-3 text-sm leading-6 text-gray-600">Instagram:</label>
                                     
@@ -425,11 +470,11 @@ function MyProfile () {
                                         type="url"
                                         placeholder="https://www..."
                                         { ...register('instagramForm') }
-                                        className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                                        className="w-full block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 
-                                {/* facebookForm */}
+{/* facebookForm */}
                                 <div className="mt-2">
                                     <label htmlFor="social-media-facebook" className="mb-3 text-sm leading-6 text-gray-600">Facebook:</label>
 
@@ -440,11 +485,11 @@ function MyProfile () {
                                     type="url"
                                         placeholder="https://www..."
                                         { ...register('facebookForm') }
-                                        className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                                        className="w-full block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
                                 </div>
                                 
-                                {/* twitterForm */}
+{/* twitterForm */}
                                 <div className="mt-2">
                                     <label htmlFor="social-media-x" className="mb-3 text-sm leading-6 text-gray-600">Twitter:</label>
 
@@ -455,17 +500,21 @@ function MyProfile () {
                                         type="url"
                                         placeholder="https://www..."
                                         { ...register('twitterForm') }
-                                        className="block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                                        className="w-full block rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     />
                                 </div>
                             </div>
                         </div>
 
+{/* Extra buttons */}
                         <div className='flex flex-col my-8 gap-y-2'>
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-sky-500 w-full flex justify-center items-center md:w-full gap-2'>{ < FaCheck className='text-white w-5 h-5' /> }Actualizar Plan</button>
+{/* Update plam */}
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-sky-500 w-full flex justify-center items-center md:w-full gap-2'>{ < IoMdHappy className='text-white w-5 h-5' /> }Actualizar Plan</button>
 
-                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-lime-500 w-full flex justify-center items-center md:w-full gap-2'>{ < IoChatboxOutline className='text-white w-5 h-5' /> }Asistencia</button>
+{/* Contact us */}
+                            <button className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-lime-500 w-full flex justify-center items-center md:w-full gap-2'>{ < FaWhatsapp className='text-white w-5 h-5' /> }Asistencia</button>
 
+{/* Delete account */}
                             <button className='rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500 w-full flex justify-center items-center md:w-full gap-2'>{ < MdDeleteOutline className='text-white w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
