@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
-import { CategoryCard } from '../../components/organims/category-card'
 import { Navbar } from '../../components/organims/navbar'
+import { CategoryCard } from '../../components/organims/category-card'
 
-function Home () { 
+function Home () {
+  const sortCategory = () => {
+    
+  }
+
   return (
     <>
       <Navbar />
 
       <div className='w-full flex flex-col items-center'>
         <div  className="w-4/5 flex flex-col items-center pb-12">
-          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ENCUENTRA TU ENTRENADOR PERSONAL</h2>
+          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ENCUENTRA TU PROFESIONAL DE LA SALUD</h2>
 
           <div className="mt-10 w-4/5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
@@ -18,19 +22,20 @@ function Home () {
               </label>
 
               <div className="mt-2">
-              <select className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 sm:text-sm sm:leading-6">
-                <option>Seleccionar</option>
+                <select className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 cursor-pointer sm:text-sm sm:leading-6">
+                  <option>Seleccionar</option>
 
-                <option>Entrenador</option>
+                  <option>Entrenador</option>
 
-                <option>Fisioterapeuta</option>
+                  <option>Fisioterapeuta</option>
 
-                <option>Nutricionista</option>
-              </select>
+                  <option>Nutricionista</option>
+                </select>
               </div>
             </div>
 
-            <div className="sm:col-span-3">
+{/* Second input: location (?) */}
+            {/* <div className="sm:col-span-3">
               <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
                 Ciudad
               </label>
@@ -46,10 +51,10 @@ function Home () {
                   <option>Medellín</option>
                 </select>
               </div>
-            </div>
+            </div> */}
 
-            <div className="sm:col-span-2">
-              <button className="w-full leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            <div className="sm:col-span-2 sm:relative">
+              <button onClick={ sortCategory() } className="w-full mt-1 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:absolute bottom-0 left-0">
                 Buscar
               </button>
             </div>
