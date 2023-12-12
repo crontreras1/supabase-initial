@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Navbar } from '../../components/organims/navbar'
 import { RxAvatar } from "react-icons/rx";
 import { MdOutlineReport } from "react-icons/md";
-import { FaFacebookSquare } from "react-icons/fa";
+import { FaFacebookSquare, FaWhatsapp } from "react-icons/fa";
 import { SiInstagram } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
 import { useAuth } from '../../Auth'
@@ -131,14 +131,11 @@ function Profile () {
                         </div>
 
                         <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                            <button type="button" className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3">
-                                {/* <div className='flex gap-2 items-center justify-around'>
-                                    <ChatBubbleOvalLeftEllipsisIcon className='w-6 h-6' />
+                            <a target='_blank' className="w-full rounded-md cursor-pointer bg-lime-600 hover:bg-lime-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2">
+                                < FaWhatsapp className='text-white w-5 h-5' />
 
-                                    <p className=''>Contactar</p>
-                                </div> */}
                                 Contactar
-                            </button>
+                            </a>
                         </div>
 
                         <div className="mt-6 flex justify-center gap-8 sm:grid-cols-6">

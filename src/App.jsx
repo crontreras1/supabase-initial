@@ -32,8 +32,6 @@ function App() {
     return routes
   }
 
-
-
   return (
     <BrowserRouter>
       <AuthProvider>
