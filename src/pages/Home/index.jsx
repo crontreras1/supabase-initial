@@ -74,7 +74,8 @@ function Home () {
         </div>
       </div>
 
-      <div className="mt-10 w-full h-96 px-5 flex justify-center relative md:px-10">
+{/* Second CTA */}
+      <div className="mt-10 w-full h-96 px-5 flex justify-center relative md:px-10 lg:w-4/5 lg:mx-auto">
         <div className="w-4/5 h-full flex flex-col items-center justify-center absolute">
 
           <h2 className="mb-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">¡TU BIENESTAR ESTÁ A UN SOLO CLIC DE DISTANCIA!</h2>
@@ -91,16 +92,22 @@ function Home () {
           className=' w-full h-full object-cover'
         />
       </div>
-
+{/* Thirth CTA */}
       <div className='px-10'>
-        <h2 className=" mt-20 mx-auto mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">¿Qué estás buscando?</h2>
+        <h2 className=" mt-10 mx-auto mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 md:mt-20 md:mb-10">¿QUÉ ESTÁS BUSCANDO?</h2>
 
         <div className='flex flex-col items-center gap-10 md:flex-row md:justify-evenly'>
-          <CategoryCard img='nutrition' name='nutrition'/>
+          <Link to={'/trainers/nutritionits'}>
+            <CategoryCard img='nutrition' name='nutrition'/>
+          </Link>
 
-          <CategoryCard img='training' name='training'/>
+          <Link to={'/trainers/personal-trainers'}>
+            <CategoryCard img='training' name='training'/>
+          </Link>
 
-          <CategoryCard img='physiotherapy' name='physiotherapy'/>
+          <Link to={'/trainers/physiotherapists'}>
+              <CategoryCard img='physiotherapy' name='physiotherapy'/>
+          </Link>
         </div>
       </div>
 
