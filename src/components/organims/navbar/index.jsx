@@ -18,7 +18,7 @@ function Navbar () {
                 </NavLink>
 
                 {/* mobile and tablet */}
-                <div className='lg:hidden flex items-center relative'>
+                <div className='lg:hidden flex items-center relative z-10'>
                     <button onClick={ handleMobileMenuToggle }  className=' w-6 h-6'>
                         { isMobileMenuOpen ? <RxHamburgerMenu /> : <RxHamburgerMenu /> }
                     </button>

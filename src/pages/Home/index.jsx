@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import { Navbar } from '../../components/organims/navbar'
 import { CategoryCard } from '../../components/organims/category-card'
 import { Link } from 'react-router-dom'
+import faceToFaceClass from '../../assets/images/face-to-face-class-image.jpg'
 
 function Home () {
-  const [ selectRol, setSelectRol ] = useState('select')
+  const [ selectRol, setSelectRol ] = useState('')
 
   const handleTypeChange = (event) => {
     setSelectRol(event.target.value)
   }
-  console.log(selectRol);
 
+  const img = {faceTofaceClass: faceToFaceClass}
   return (
     <>
       <Navbar />
@@ -32,7 +33,7 @@ function Home () {
                   onChange={ handleTypeChange }
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 cursor-pointer sm:text-sm sm:leading-6"
                 >
-                  <option value='select'>Seleccionar</option>
+                  <option value=''>Seleccionar</option>
 
                   <option value='personal-trainers'>Entrenador</option>
 
@@ -73,19 +74,22 @@ function Home () {
         </div>
       </div>
 
-      <div className="mt-10 w-full px-5 grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-6 md:px-10">
-        <div className="flex flex-col items-center justify-center sm:col-span-3">
+      <div className="mt-10 w-full h-96 px-5 flex justify-center relative md:px-10">
+        <div className="w-4/5 h-full flex flex-col items-center justify-center absolute">
 
-          <h2 className="mx-auto mb-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">¡Tu bienestar está a solo un clic de distancia!</h2>
+          <h2 className="mb-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">¡TU BIENESTAR ESTÁ A UN SOLO CLIC DE DISTANCIA!</h2>
 
-          <p className='text-center md:text-left mb-10'>¡Bienvenido a Fitness Mode, donde encontrarás tu compañero de bienestar personalizado! Estamos emocionados de ofrecerte una experiencia única que cambiará tu enfoque hacia la salud y el fitness. En Fitness Mode, nuestra misión es simple pero poderosa: mejorar la calidad de vida de las personas por medio de la conexión entre seres humanos. Nos apasiona conectar a individuos como tú con los mejores profesionales en el campo de la salud, incluyendo entrenadores personales, nutricionistas y fisioterapeutas. Con Fitness Mode, no estás solo en tu viaje hacia una vida más saludable y equilibrada. Descubre la diferencia de trabajar con expertos comprometidos que te brindarán apoyo, orientación y un plan personalizado diseñado exclusivamente para ti.</p>
-
-          <button className="w-4/5 md:w-2/4 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Encontrar Entrenador</button>
+          {/* <p className='text-center md:text-left mb-10'>¡Bienvenido a Fitness Mode, donde encontrarás tu compañero de bienestar personalizado! Estamos emocionados de ofrecerte una experiencia única que cambiará tu enfoque hacia la salud y el fitness. En Fitness Mode, nuestra misión es simple pero poderosa: mejorar la calidad de vida de las personas por medio de la conexión entre seres humanos. Nos apasiona conectar a individuos como tú con los mejores profesionales en el campo de la salud, incluyendo entrenadores personales, nutricionistas y fisioterapeutas. Con Fitness Mode, no estás solo en tu viaje hacia una vida más saludable y equilibrada. Descubre la diferencia de trabajar con expertos comprometidos que te brindarán apoyo, orientación y un plan personalizado diseñado exclusivamente para ti.</p> */}
+          <Link to={'/trainers'} className='w-full flex justify-center'>
+            <button className="w-4/5 md:w-2/4 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Encontrar Profesional</button>
+          </Link>
         </div>
 
-        <div className="md:flex hidden items-center sm:col-span-3 object-cover">
-          <img src="https://s3.abcstatics.com/media/bienestar/2019/09/18/entrenador-personal-U303043078655KJE--1248x698@abc.jpg" alt="" />
-        </div>
+        <img 
+          src={ faceToFaceClass }
+          alt="clase semipersonalizada" 
+          className=' w-full h-full object-cover'
+        />
       </div>
 
       <div className='px-10'>
