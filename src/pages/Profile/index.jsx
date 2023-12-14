@@ -8,6 +8,7 @@ import { SiInstagram } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
+import { Footer } from '../../components/organims/footer';
 
 function Profile () {
     const [ profileData, setProfileData ] = useState()
@@ -157,6 +158,8 @@ function Profile () {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </>
     )
 }

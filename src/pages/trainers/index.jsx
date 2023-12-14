@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Navbar } from '../../components/organims/navbar'
 import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
+import { Footer } from '../../components/organims/footer'
 
 function Trainers () {
     const [trainers, setTrainers] = useState(null)
@@ -34,6 +35,8 @@ function Trainers () {
                     })
                 }
             </div>
+
+            <Footer />
         </>
   )
 }

@@ -8,6 +8,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { IoMdHappy } from "react-icons/io";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
+import { Footer } from '../../components/organims/footer'
 
 function MyProfile () {
     const [ trainersData, setTrainersData ] = useState({})
@@ -518,6 +519,8 @@ function MyProfile () {
                     </div>
                 </form>
             </div>
+
+            <Footer />
         </>
     )
 }

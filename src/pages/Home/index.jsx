@@ -3,6 +3,7 @@ import { Navbar } from '../../components/organims/navbar'
 import { CategoryCard } from '../../components/organims/category-card'
 import { Link } from 'react-router-dom'
 import faceToFaceClass from '../../assets/images/face-to-face-class-image.jpg'
+import { Footer } from '../../components/organims/footer'
 
 function Home () {
   const [ selectRol, setSelectRol ] = useState('')
@@ -17,8 +18,8 @@ function Home () {
       <Navbar />
 
       <div className='w-full flex flex-col items-center'>
-        <div  className="w-4/5 flex flex-col items-center pb-12">
-          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">ENCUENTRA TU PROFESIONAL DE LA SALUD</h2>
+        <div  className="w-4/5 flex flex-col items-center pb-10">
+          <h2 className="text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">ENCUENTRA TU PROFESIONAL DE LA SALUD</h2>
 
           <div className="mt-10 w-4/5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
@@ -93,12 +94,12 @@ function Home () {
         />
       </div>
 {/* Thirth CTA */}
-      <div className='px-10'>
+      <div className='px-10 w-full'>
         <h2 className=" mt-10 mx-auto mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 md:mt-20 md:mb-10">¿QUÉ ESTÁS BUSCANDO?</h2>
 
-        <div className='flex flex-col items-center gap-10 md:flex-row md:justify-evenly'>
+        <div className='w-full flex flex-col items-center flex-wrap gap-10 md:flex-row md:justify-around'>
           <Link to={'/trainers/nutritionits'}>
-            <CategoryCard img='nutrition' name='nutrition'/>
+            <CategoryCard img='nutrition' name='nutrition' className='w-full mx-5 rounded-md'/>
           </Link>
 
           <Link to={'/trainers/personal-trainers'}>
@@ -111,17 +112,21 @@ function Home () {
         </div>
       </div>
 
-      <div className='px-10 mb-8'>
+      <div className='px-10 mb-8 lg:w-2/3 lg:m-auto lg:mb-10'>
         <h2 className=" mt-20 mb-10 mx-auto text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
 
         <p className='text-center mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
 
         <div className='flex flex-col items-center gap-2 mb-6npm decoration-violet-50'>
-          <button className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 sm:w-48">Crear Perfil</button>
+          <Link to={'/register'}>
+            <button className="w-full rounded-md bg-buttonLink hover:bg-hoverButtonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 sm:w-48">Crear Perfil</button>
+          </Link>
 
           <button className="text-sm font-semibold leading-6 text-gray-900">Más información</button>
         </div>
       </div>
+
+      <Footer />
     </>
   )
 }
