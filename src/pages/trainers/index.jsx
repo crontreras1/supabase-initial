@@ -5,7 +5,7 @@ import { supabase } from '../../supabase/supabaseClient'
 import { Footer } from '../../components/organims/footer'
 
 function Trainers () {
-    const [trainers, setTrainers] = useState(null)
+    const [trainers, setTrainers] = useState()
 
     useEffect(() => {
         async function fetchCardsData () {
@@ -19,6 +19,7 @@ function Trainers () {
             if (data) {
                 setTrainers(data)
             }
+            console.log(data)
         }
         fetchCardsData()
     }, [])
@@ -35,8 +36,6 @@ function Trainers () {
                     })
                 }
             </div>
-
-            <Footer />
         </>
   )
 }

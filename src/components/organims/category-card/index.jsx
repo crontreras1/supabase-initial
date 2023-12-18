@@ -16,12 +16,13 @@ function CategoryCard ({ img, name}) {
     }
 
     return (
-        <div className='w-56 h-96 md:h-96 cursor-pointer rounded-lg'>
-            <figure className='relative w-full h-full bg-cover bg-center'>
-                <div class=" w-full h-full absolute inset-0 bg-black opacity-50"></div>
+        <div className='w-56 h-56 md:h-96 cursor-pointer shadow-md hover:shadow-lg transition duration-300 ease-in-out sm:w-96 sm:h-96'>
+            <figure className='relative w-full h-full bg-cover bg-center ring-1 rounded-lg'>
+                <div class=" w-full h-full absolute inset-0 bg-black opacity-50 rounded-lg"></div>
 
-                <img className='w-full h-full object-cover' src={ categoryImg[img] } alt='' />
-                <div className='w-full absolute inset-0 flex items-center justify-center'>
+                <img className='w-full h-full object-cover rounded-lg' src={ categoryImg[img] } alt='' />
+                
+                <div className='w-full absolute inset-0 flex items-center justify-center rounded-lg'>
                     <h3 className='text-2xl font-bold leading-9 tracking-tight text-white'>{ categoryName[name] }</h3>
                 </div>
             </figure>

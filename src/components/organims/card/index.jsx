@@ -7,7 +7,7 @@ function Card (data) {
     console.log(data.data.id);
     return (
         <Link to={ `profile/${data.data.id_profile}` }>
-            <div className='cursor-pointer w-72 h-96 p-3 ring-1 ring-inset ring-gray-500/10'>
+            <div className='cursor-pointer w-72 h-96 p-3 ring-1 ring-inset ring-gray-500/10 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out'>
                 <div className='h-1/2 relative'>
                     <figure className='w-full h-full'>
                         { data.data.avatar ? <img

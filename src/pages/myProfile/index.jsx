@@ -23,7 +23,7 @@ function MyProfile () {
 // push data to table trainers
     const onSubmit = handleSubmit( async data => {  
         const dataTrainer = {
-            // avatar: avatar,
+            avatar: data.avatar,
             benefits: data.benefits,
             biography: data.biography,
             education: data.education,
@@ -63,7 +63,7 @@ function MyProfile () {
                 } 
                 if (data) {
                     setTrainersData(data[0])
-                    // setValue('avatar', data[0].avatar)
+                    setValue('avatar', data[0].avatar)
                     setValue('benefits', data[0].benefits)
                     setValue('biography', data[0].biography) 
                     setValue('education', data[0].education) 
@@ -304,7 +304,8 @@ function MyProfile () {
                     <div className='col-span-1 p-4'>
 {/* avatar */}
                         <div className="w-full mt-2 flex flex-col items-center justify-center gap-x-3">
-                            <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />
+                            { data[0].avatar ? data[0].avatar : <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" /> }
+                            
 
                             <input
                                 id="avatar"
@@ -510,17 +511,15 @@ function MyProfile () {
 {/* Extra buttons */}
                         <div className='flex flex-col my-8 gap-y-2'>
 {/* Update plan */}
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-sky-500 w-full flex justify-center items-center md:w-full gap-2'>{ < IoMdHappy className='text-white w-5 h-5' /> }Actualizar Plan</button>
+                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center md:w-full gap-2'>{ < IoMdHappy className='text-white w-5 h-5' /> }Actualizar Plan</button>
 {/* Contact us */}
-                            <a href='https://wa.me/message/CJQCFQJYA5U7G1' target='_blank' className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-lime-500 w-full flex justify-center items-center md:w-full gap-2'>{ < FaWhatsapp className='text-white w-5 h-5' /> }Asistencia</a>
+                            <a href='https://wa.me/message/CJQCFQJYA5U7G1' target='_blank' className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center md:w-full gap-2'>{ < FaWhatsapp className='text-white w-5 h-5' /> }Asistencia</a>
 {/* Delete account */}
-                            <button className='rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500 w-full flex justify-center items-center md:w-full gap-2'>{ < MdDeleteOutline className='text-white w-5 h-5' /> }Eliminar perfil</button>
+                            <button className='rounded-md px-2.5 py-1.5 text-sm font-semibold w-full flex justify-center items-center md:w-full gap-2 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>{ < MdDeleteOutline className='text-gray-900 w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>
             </div>
-
-            <Footer />
         </>
     )
 }

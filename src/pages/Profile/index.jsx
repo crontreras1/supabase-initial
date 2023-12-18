@@ -8,7 +8,6 @@ import { SiInstagram } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
-import { Footer } from '../../components/organims/footer';
 
 function Profile () {
     const [ profileData, setProfileData ] = useState()
@@ -109,14 +108,14 @@ function Profile () {
                             </div>
 
                             <div className='my-8'>
-                                <button className='rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-500 w-full flex justify-center items-center gap-2 sm:w-1/2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</button>
+                                <button className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center gap-2 sm:w-1/2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</button>
                             </div>
                         </div>
                     </div>
 
                     <div className='col-span-1 p-4'>
-                        <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
-                            <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />                                                                                                       
+                        <div className="w-48 h-48 mt-2 mx-auto flex flex-col items-center justify-center gap-x-3 rounded-lg">
+                            { profileData && profileData.avatar ? <img src={ profileData.avatar } className='w-full h-full object-cover rounded-lg' /> : <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />  }
                         </div>
 
                         <div className="mt-6 gap-y-8 sm:grid-cols-6">
@@ -132,7 +131,7 @@ function Profile () {
                         </div>
 
                         <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                            <a target='_blank' className="w-full rounded-md cursor-pointer bg-lime-600 hover:bg-lime-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2">
+                            <a target='_blank' className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
                                 < FaWhatsapp className='text-white w-5 h-5' />
 
                                 Contactar
@@ -158,8 +157,6 @@ function Profile () {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </>
     )
 }

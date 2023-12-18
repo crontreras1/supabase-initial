@@ -21,7 +21,7 @@ function Home () {
         <div  className="w-4/5 flex flex-col items-center pb-10">
           <h2 className="text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">ENCUENTRA TU PROFESIONAL DE LA SALUD</h2>
 
-          <div className="mt-10 w-4/5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="mt-10 w-4/5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-5">
             <div className="sm:col-span-3">
               <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">
                 Categoría
@@ -76,8 +76,10 @@ function Home () {
       </div>
 
 {/* Second CTA */}
-      <div className="mt-10 w-full h-96 px-5 flex justify-center relative md:px-10 lg:w-4/5 lg:mx-auto">
+      <figure className="mt-10 w-full h-96 px-5 flex justify-center relative md:px-10 lg:w-4/5 lg:mx-auto">
         <div className="w-4/5 h-full flex flex-col items-center justify-center absolute">
+
+          {/* <div class="w-full h-full absolute inset-0 bg-black opacity-50 z-10"></div> */}
 
           <h2 className="mb-6 text-center text-2xl font-bold leading-9 tracking-tight text-white">¡TU BIENESTAR ESTÁ A UN SOLO CLIC DE DISTANCIA!</h2>
 
@@ -90,14 +92,14 @@ function Home () {
         <img 
           src={ faceToFaceClass }
           alt="clase semipersonalizada" 
-          className=' w-full h-full object-cover'
+          className='w-full h-full object-cover'
         />
-      </div>
+      </figure>
 {/* Thirth CTA */}
       <div className='px-10 w-full'>
         <h2 className=" mt-10 mx-auto mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 md:mt-20 md:mb-10">¿QUÉ ESTÁS BUSCANDO?</h2>
 
-        <div className='w-full flex flex-col items-center flex-wrap gap-10 md:flex-row md:justify-around'>
+        <div className='w-full flex flex-col items-center flex-wrap gap-10 md:flex-row md:justify-around border-solid border-1 border-red-500'>
           <Link to={'/trainers/nutritionits'}>
             <CategoryCard img='nutrition' name='nutrition' className='w-full mx-5 rounded-md'/>
           </Link>

@@ -18,7 +18,7 @@ function RegisterForm() {
 // push data to table trainers
     const onSubmit = handleSubmit( async data => {  
         const dataTrainer = {
-            // avatar: avatar,
+            avatar: data.avatar,
             benefits: data.benefits,
             biography: data.biography,
             education: data.education,
@@ -58,7 +58,7 @@ function RegisterForm() {
                 } 
                 if (data) {
                     setTrainersData(data[0])
-                    // setValue('avatar', data[0].avatar)
+                    setValue('avatar', data[0].avatar)
                     setValue('benefits', data[0].benefits)
                     setValue('biography', data[0].biography) 
                     setValue('education', data[0].education) 
