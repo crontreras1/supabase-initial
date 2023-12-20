@@ -94,29 +94,22 @@ function RegisterForm() {
         <form onSubmit={ onSubmit }>
             <div className="mx-auto space-y-12 max-w-2xl px-6">
 {/* avatar */}
-                <div className="mt-2 flex flex-col items-center justify-center gap-x-3">
-                    <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" />
-
-                    <input
-                        id="avatar"
-                        name="avatar"
-                        type="url"
-                        placeholder='https://www...'
-                        { ...register('avatar') }
-                        className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 sm:w-1/2"
-                    />
-
-                    {/* <button
-                        type="button"
-                        className=" rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    >
-                        Cambiar foto de perfil
-                    </button> */}
-                </div>
 
                 <div className="border-b border-gray-900/10 pb-12">
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">General:</h3>
 
+                    <div className="mt-6 flex flex-col items-start justify-center gap-x-3">
+                        <label htmlFor="avatar" className="block text-sm font-medium leading-6 text-gray-900">URL imagen de perfil:</label>
+
+                        <input
+                            id="avatar"
+                            name="avatar"
+                            type="url"
+                            placeholder='https://www...'
+                            { ...register('avatar') }
+                            className="mt-2 block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 sm:w-1/2"
+                        />
+                    </div>
 {/* // Rol */}
                     <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
                         <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">Rol:</label>

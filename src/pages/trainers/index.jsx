@@ -19,7 +19,6 @@ function Trainers () {
             if (data) {
                 setTrainers(data)
             }
-            console.log(data)
         }
         fetchCardsData()
     }, [])

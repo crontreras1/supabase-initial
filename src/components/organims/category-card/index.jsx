@@ -10,9 +10,9 @@ function CategoryCard ({ img, name}) {
     }
 
     const categoryName = {
-        nutrition: "NUTRICIÓN",
-        training: "ENTRENAMIENTO",
-        physiotherapy: "FISIOTERAPIA"
+        nutrition: "Nutrición",
+        training: "Entrenamiento",
+        physiotherapy: "Fisioterapia"
     }
 
     return (
@@ -23,7 +23,7 @@ function CategoryCard ({ img, name}) {
                 <img className='w-full h-full object-cover rounded-lg' src={ categoryImg[img] } alt='' />
                 
                 <div className='w-full absolute inset-0 flex items-center justify-center rounded-lg'>
-                    <h3 className='text-2xl font-bold leading-9 tracking-tight text-white'>{ categoryName[name] }</h3>
+                    <h3 className='text-3xl font-bold leading-9 tracking-tight text-white sm:text-5xl'>{ categoryName[name] }</h3>
                 </div>
             </figure>
         </div>

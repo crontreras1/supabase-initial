@@ -126,16 +126,24 @@ function Profile () {
                                 {/* Rol */}
                                 <p htmlFor="firstName" className="text-center mb-3 text-sm leading-6 text-gray-600">{ profileData && profileData.rol }</p>
                                 {/* minPrice and MaxPrice */}
-                                <p htmlFor="firstName" className="text-center mb-3 text-sm leading-6 text-gray-600">Valor de la clase:<br /> { profileData && profileData.min_price } - { profileData && profileData.max_price }</p>
+                                <p htmlFor="firstName" className="text-center mb-3 text-sm leading-6 text-gray-600">Valor de la clase:<br />{`$${profileData && profileData.min_price} - $${profileData && profileData.max_price}` }</p>
                             </div>
                         </div>
 
                         <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                            <a target='_blank' className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
-                                < FaWhatsapp className='text-white w-5 h-5' />
+                            { 
+                                profileData && profileData.tel ? 
+                                    <a
+                                        href={`https://wa.me/${profileData.tel}`} 
+                                        target='_blank' 
+                                        className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5"
+                                    >
+                                        < FaWhatsapp className='text-white w-5 h-5' />
 
-                                Contactar
-                            </a>
+                                        Contactar
+                                    </a> : 
+                                    <span></span>
+                            }    
                         </div>
 
                         <div className="mt-6 flex justify-center gap-8 sm:grid-cols-6">

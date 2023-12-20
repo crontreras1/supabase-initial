@@ -303,9 +303,8 @@ function MyProfile () {
 
                     <div className='col-span-1 p-4'>
 {/* avatar */}
-                        <div className="w-full mt-2 flex flex-col items-center justify-center gap-x-3">
-                            { data[0].avatar ? data[0].avatar : <RxAvatar className="h-28 w-28 text-gray-300" aria-hidden="true" /> }
-                            
+                        <div className="w-full mt-2 flex flex-col items-start justify-center gap-x-3">
+                            <label htmlFor="avatar" className="mb-2 block text-sm font-medium leading-6 text-gray-900">URL avatar:</label>
 
                             <input
                                 id="avatar"

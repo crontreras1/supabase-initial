@@ -11,6 +11,7 @@ import { MyProfile } from "./pages/myProfile"
 import { PersonalTrainersCards } from "./pages/personalTrainers"
 import { NutritionistsCards } from "./pages/nutritionists"
 import { PhysiotherapistsCards } from "./pages/physiotherapists"
+import { Guide } from "./pages/guide/guide"
 
 function App() {
   //Routes
@@ -26,6 +27,7 @@ function App() {
       { path: '/trainers/nutritionits', element: <NutritionistsCards /> },
       { path: '/trainers/physiotherapists', element: <PhysiotherapistsCards /> },
       { path: '/trainers/profile/:idProfile', element: <Profile /> },
+      { path: '/guide', element: <Guide /> },
       { path: '/*', element: <NotFound /> }
     ])
 

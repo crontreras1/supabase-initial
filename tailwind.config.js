@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         focus: '#ef4444',
-        hoverFocus: '#f87171',
-        buttonLink: '#0284c7',
-        hoverButtonLink: '#7dd3fc'
+        hFocus: '#f87171',
+        primaryColor: '#0284c7',
+        hPrimaryColor: '#7dd3fc'
       }
     },
   },
