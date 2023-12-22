@@ -8,6 +8,8 @@ function AuthProvider ({ children }) {
   // const [user, setUser] = useState(null)
   const [session, setSession] = useState();
 
+  const [ openContactModal, setOpenContactModal ] = useState(false)
+
   // const login = ({ userEmail }) => {
   //   setUser({ userEmail })
   //   Navigate('/profile')
@@ -26,7 +28,11 @@ function AuthProvider ({ children }) {
 
   return (
     <>
-      <AuthContext.Provider value={{ session }}>
+      <AuthContext.Provider value={{ 
+        session,
+        openContactModal,
+        setOpenContactModal
+      }}>
         { children }
       </AuthContext.Provider>
     </>

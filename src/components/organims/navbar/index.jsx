@@ -38,7 +38,7 @@ function Navbar () {
     console.log(avatarImg);
     
     return (
-        <div className='w-full mt-5 mb-10'>
+        <div className='w-full pt-2 mb-10'>
             <nav className='mx-6 mt-5 flex justify-between items-center'>
                 <NavLink to='/'>
                     <img src={ logoImg } className='w-56 lg:w-96' />    
