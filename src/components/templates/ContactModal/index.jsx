@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { supabase } from "../../../supabase/supabaseClient"
 
-function ContactModal () {
+function ContactModal ({ onClose }) {
     const [ contact, setContact ] = useState([{tel: ''}])
 
     useEffect(() => {
@@ -33,7 +32,7 @@ function ContactModal () {
                     <p className="text-xl text-center text-gray-900">Fitness Mode no interviene en las relaciones entre anunciantes y usuarios</p>
 
                     <div className="w-full h-1/4 flex flex-col-reverse justify-center items-center gap-y-5 sm:flex-row sm:gap-10">
-                        <Link to={'/'} className="text-gray-900 underline cursor-pointer">Cancelar</Link>
+                        <button onClick={ onClose } className="text-gray-900 underline cursor-pointer">Cancelar</button>
                         
                         <a href={ `https://wa.me/${contact[0].tel}` } target='_blank' className="w-36 text-center leading-10 bg-primaryColor text-white rounded-lg cursor-pointer">Contactar</a>
                     </div>

@@ -6,14 +6,13 @@ import { MdOutlineReport } from "react-icons/md";
 import { FaFacebookSquare, FaWhatsapp } from "react-icons/fa";
 import { SiInstagram } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
-import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 import { ContactModal } from '../../components/templates/ContactModal';
 
 function Profile () {
     const [ profileData, setProfileData ] = useState()
     const navigate = useNavigate()
-    const { openContactModal, setOpenContactModal } = useAuth()
+    const [ openContactModal, setOpenContactModal ] = useState(false)
     const { idProfile } = useParams()
     
     // if (session) {
@@ -65,15 +64,18 @@ function Profile () {
         fetchProfileData()
     }, [idProfile])
 
-    const contactButton = () => {
-        // setOpenContactModal(state => !state)
-        console.log('funciona')
+    const openContactModalBtn = () => {
+        setOpenContactModal(true)
+    }
+
+    const closeContactModalBtn = () => {
+        setOpenContactModal(false)
     }
     
     return (
         <>
             <div className='relative'>
-                <ContactModal />
+                { openContactModal && <ContactModal onClose={ closeContactModalBtn } /> }
 
                 <Navbar />
                 
@@ -142,7 +144,7 @@ function Profile () {
                             <div className="w-full mt-6 flex justify-center sm:col-span-4">
                                 { 
                                     profileData && profileData.tel ? 
-                                        <button onClick={ contactButton() } className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
+                                        <button onClick={ openContactModalBtn } className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
                                             < FaWhatsapp className='text-white w-5 h-5' />
 
                                             Contactar

@@ -35,7 +35,7 @@ function Navbar () {
         }
         fetchAvatarData()
     }, [session])
-    console.log(avatarImg);
+    // console.log(avatarImg);
     
     return (
         <div className='w-full pt-2 mb-10'>
