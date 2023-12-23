@@ -28,11 +28,7 @@ function AuthProvider ({ children }) {
 
   return (
     <>
-      <AuthContext.Provider value={{ 
-        session,
-        openContactModal,
-        setOpenContactModal
-      }}>
+      <AuthContext.Provider value={{ session }}>
         { children }
       </AuthContext.Provider>
     </>

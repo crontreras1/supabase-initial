@@ -1,29 +1,8 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../../supabase/supabaseClient"
+import { useAuth } from "../../../Auth"
 
-function ContactModal ({ onClose }) {
-    const [ contact, setContact ] = useState([{tel: ''}])
-
-    useEffect(() => {
-        async function fetchContactData () {  
-            const { data, error } = await supabase
-            .from('trainers')
-            .select('tel')
-            .eq()
-            if (error) {
-                throw error
-            } 
-            if (data) {
-                setContact(data)
-            }
-        }        
-        fetchContactData()
-    }, [])
-
-    // const openModal = () => (
-
-    // )
-
+function ContactModal ({ onClose, onContact }) {    
     return (
         <div className="absolute w-screen h-screen flex justify-center items-center">
                 <div className=" w-screen h-screen bg-black opacity-50 absolute flex"></div>
@@ -34,11 +13,12 @@ function ContactModal ({ onClose }) {
                     <div className="w-full h-1/4 flex flex-col-reverse justify-center items-center gap-y-5 sm:flex-row sm:gap-10">
                         <button onClick={ onClose } className="text-gray-900 underline cursor-pointer">Cancelar</button>
                         
-                        <a href={ `https://wa.me/${contact[0].tel}` } target='_blank' className="w-36 text-center leading-10 bg-primaryColor text-white rounded-lg cursor-pointer">Contactar</a>
+                        <a href={ `https://wa.me/${onContact}` } target='_blank' className="w-36 text-center leading-10 bg-primaryColor text-white rounded-lg cursor-pointer">Contactar</a>
                     </div>
                 </div>
         </div>
     )
 }        
 
+// href={ `https://wa.me/${contact[0].tel}` }
 export { ContactModal }

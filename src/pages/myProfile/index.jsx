@@ -15,6 +15,7 @@ function MyProfile () {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const { session } = useAuth()
     const navigate = useNavigate()
+    console.log(trainersData);
     
     if (!session) {
         navigate('/')

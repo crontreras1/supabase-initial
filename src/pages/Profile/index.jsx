@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Navbar } from '../../components/organims/navbar'
 import { RxAvatar } from "react-icons/rx";
 import { MdOutlineReport } from "react-icons/md";
@@ -11,7 +11,6 @@ import { ContactModal } from '../../components/templates/ContactModal';
 
 function Profile () {
     const [ profileData, setProfileData ] = useState()
-    const navigate = useNavigate()
     const [ openContactModal, setOpenContactModal ] = useState(false)
     const { idProfile } = useParams()
     
@@ -63,19 +62,21 @@ function Profile () {
         }        
         fetchProfileData()
     }, [idProfile])
-
+    
     const openContactModalBtn = () => {
         setOpenContactModal(true)
     }
-
+    
     const closeContactModalBtn = () => {
         setOpenContactModal(false)
     }
     
+    const telNumber = profileData && profileData.tel
+    
     return (
         <>
             <div className='relative'>
-                { openContactModal && <ContactModal onClose={ closeContactModalBtn } /> }
+                { openContactModal && <ContactModal onClose={ closeContactModalBtn } onContact={ telNumber } /> }
 
                 <Navbar />
                 
