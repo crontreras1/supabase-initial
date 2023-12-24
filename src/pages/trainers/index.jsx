@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react'
 import { Navbar } from '../../components/organims/navbar'
 import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
-import { Footer } from '../../components/organims/footer'
 
 function Trainers () {
-    const [trainers, setTrainers] = useState()
+    const [trainers, setTrainers] = useState([])
 
     useEffect(() => {
         async function fetchCardsData () {
@@ -22,6 +21,17 @@ function Trainers () {
         }
         fetchCardsData()
     }, [])
+
+    // Generate random cards
+    const generateRandomCards = (length) => {
+        const order = Array.from({ length }, (_, index) => index);
+        order.sort(() => Math.random() - 0.5);
+        return order;
+    };
+    
+    const randomCards = generateRandomCards(trainers.length);
+    
+    
     
     return (
         <>
@@ -29,9 +39,9 @@ function Trainers () {
             
             <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
                 {
-                    trainers && 
-                    trainers.map(trainer => {
-                        return <Card key={ trainer.id } data={ trainer }/>
+                    randomCards.map((index) => {
+                    const trainer = trainers[index];
+                    return <Card key={trainer.id} data={trainer} />;
                     })
                 }
             </div>
