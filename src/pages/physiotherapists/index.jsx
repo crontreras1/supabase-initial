@@ -4,7 +4,7 @@ import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
 
 function PhysiotherapistsCards () {
-    const [physiotherapists, setPhysiotherapists] = useState(null)
+    const [physiotherapists, setPhysiotherapists] = useState([])
 
     useEffect(() => {
         async function fetchPhysiotherapistsCardsData () {
@@ -21,15 +21,29 @@ function PhysiotherapistsCards () {
         }
         fetchPhysiotherapistsCardsData()
     }, [])
+
+    const generateRandomPhysiotherapistsCard = (length) => {
+        const order = Array.from({ length }, (_, index) => index)
+        order.sort(() => Math.random() - 0.5)
+        return order
+    }
+
+    const randomPhysiotherapistsCard = generateRandomPhysiotherapistsCard(physiotherapists.length)
     
     return (
         <>
             <Navbar />
             
             <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
-                {
+                {/* {
                     physiotherapists && 
                     physiotherapists.map (physiotherapist => {
+                        return <Card key={ physiotherapist.id } data={ physiotherapist }/>
+                    })
+                } */}
+                {
+                    randomPhysiotherapistsCard.map((index) => {
+                        const physiotherapist = physiotherapists[index]
                         return <Card key={ physiotherapist.id } data={ physiotherapist }/>
                     })
                 }

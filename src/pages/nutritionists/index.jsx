@@ -4,7 +4,7 @@ import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
 
 function NutritionistsCards () {
-    const [nutritionists, setNutritionists] = useState(null)
+    const [nutritionists, setNutritionists] = useState([])
 
     useEffect(() => {
         async function fetchNutritionistsCardsData () {
@@ -21,6 +21,14 @@ function NutritionistsCards () {
         }
         fetchNutritionistsCardsData()
     }, [])
+
+    const generateRandomNutritionistsCard = (length) => {
+        const order = Array.from({ length }, (_, index) => index)
+        order.sort(() => Math.random() - 0.5)
+        return order
+    }
+
+    const randomNutritionistsCard = generateRandomNutritionistsCard(nutritionists.length)
     
     return (
         <>
@@ -28,8 +36,8 @@ function NutritionistsCards () {
             
             <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
                 {
-                    nutritionists && 
-                    nutritionists.map (nutritionist => {
+                    randomNutritionistsCard.map((index) => {
+                        const nutritionist = nutritionists[index]
                         return <Card key={ nutritionist.id } data={ nutritionist }/>
                     })
                 }
