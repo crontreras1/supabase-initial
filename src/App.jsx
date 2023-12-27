@@ -12,6 +12,7 @@ import { PersonalTrainersCards } from "./pages/personalTrainers"
 import { NutritionistsCards } from "./pages/nutritionists"
 import { PhysiotherapistsCards } from "./pages/physiotherapists"
 import { Guide } from "./pages/guide/guide"
+import { TermsAndConditions } from "./pages/termsAndConditions"
 
 function App() {
   //Routes
@@ -28,6 +29,7 @@ function App() {
       { path: '/trainers/physiotherapists', element: <PhysiotherapistsCards /> },
       { path: '/trainers/profile/:idProfile', element: <Profile /> },
       { path: '/guide', element: <Guide /> },
+      { path: '/terms-and-conditions', element: <TermsAndConditions /> },
       { path: '/*', element: <NotFound /> }
     ])
 
