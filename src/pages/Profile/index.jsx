@@ -12,41 +12,9 @@ import { ContactModal } from '../../components/templates/ContactModal';
 function Profile () {
     const [ profileData, setProfileData ] = useState()
     const [ openContactModal, setOpenContactModal ] = useState(false)
+    
     const { idProfile } = useParams()
     
-    // if (session) {
-    //     navigate('/my-profile')
-    // }
-
-    // const onSubmit = handleSubmit( async data => {  
-    //     const dataTrainer = {
-    //         rol: data.rol,
-    //         first_name: data.firstName,
-    //         last_name: data.lastName,
-    //         genre: data.genre,
-    //         benefits: data.benefits,
-    //         biography: data.biography,
-    //         education: data.education,
-    //         email: data.email,
-    //         tel: data.tel,
-    //         instagram_form: data.instagramForm,
-    //         facebook_form: data.facebookForm,
-    //         twitter_form: data.twitterForm,
-    //         face_to_face_classes: data.faceToFaceClasses,
-    //         online_classes: data.onlineClasses,
-    //         tools: data.tools,
-    //         schedule: data.schedule,
-    //         location: data.location,
-    //         min_price: data.minPrice,
-    //         max_price: data.maxPrice,
-    //         free_class: data.freeClass,
-    //     }  
-    //     const { error } = await supabase
-    //     .from('trainers')
-    //     .update(dataTrainer)
-    //     .eq('id_profile', session.user.id)
-    // })
-
     useEffect(() => {
         async function fetchProfileData () {  
             const { data, error } = await supabase
@@ -63,6 +31,9 @@ function Profile () {
         fetchProfileData()
     }, [idProfile])
     
+    const telNumber = profileData && profileData.tel
+    const contactEmail = 'contacto.fitnessmodelatam@gmail.com'
+    
     const openContactModalBtn = () => {
         setOpenContactModal(true)
     }
@@ -71,9 +42,6 @@ function Profile () {
         setOpenContactModal(false)
     }
     
-    const telNumber = profileData && profileData.tel
-
-    const contactEmail = 'contacto.fitnessmode@gmail.com'
     
     const reportProfile = () => {
         window.location.href = `mailto:${contactEmail}`
@@ -92,6 +60,7 @@ function Profile () {
                             <div className="mt-6 col-span-full">
                                 {/* // benefits */}
                                 <h2 className="mb-3 text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl">{ profileData && profileData.benefits }</h2>
+
                                 <div className="flex w-full gap-3 flex-wrap">
                                     {/* faceToFaceClasses */}
                                     { profileData && profileData.face_to_face_classes ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">Presencial</span> : <span className='hidden'></span> }
@@ -106,25 +75,28 @@ function Profile () {
                                     { profileData && profileData.free_class ? <span className="w-auto inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">1ra clase gratis</span> : <span className='hidden'></span> }
                                 </div>
 
+                                {/* // biography */}
                                 <div className=" mt-6 col-span-full">
-                                    {/* // biography */}
                                     <p className="block text-xl font-medium leading-6 text-gray-900">Acerca de mi</p>
+
                                     <p className="mb-3 text-xl leading-6 text-gray-600">{ profileData && profileData.biography }</p>
                                 </div>
 
+                                {/* // education */}
                                 <div className=" mt-6 col-span-full">
-                                    {/* // education */}
                                     <p className="block text-xl font-medium leading-6 text-gray-900">Logros académicos</p>
+
                                     <p className="mb-3 text-xl leading-6 text-gray-600">{profileData && profileData.education }</p>
                                 </div>
 
+                                {/* schedule */}
                                 <div className=" mt-6 col-span-full">
-                                    {/* schedule */}
                                     <p htmlFor="schedule" className="block text-xl font-medium leading-6 text-gray-900">Agenda:</p>
 
                                     <p className="mb-3 text-xl leading-6 text-gray-600">{profileData && profileData.schedule }</p>
                                 </div>
-                                    {/* Report profile */}
+
+                                {/* Report profile */}
                                 <div className='my-8'>
                                     <a onClick={ reportProfile } className='rounded-md bg-white px-2.5 py-1.5 text-xl font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 w-full flex justify-center items-center gap-2 cursor-pointer sm:w-1/2'>{ <MdOutlineReport  className='w-5 h-5' /> }Reportar Perfil</a>
                                 </div>
@@ -143,6 +115,7 @@ function Profile () {
                                     
                                     {/* Rol */}
                                     <p htmlFor="firstName" className="text-center mb-3 text-xl leading-6 text-gray-600">{ profileData && profileData.rol }</p>
+                                    
                                     {/* minPrice and MaxPrice */}
                                     <p htmlFor="firstName" className="text-center mb-3 text-xl leading-6 text-gray-600">Valor de la clase:<br />{`$${profileData && profileData.min_price} - $${profileData && profileData.max_price}` }</p>
                                 </div>

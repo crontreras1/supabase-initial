@@ -1,17 +1,17 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form"
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { supabase } from "../../supabase/supabaseClient"
 import { useAuth } from '../../Auth'
 
 function Register() {
     const { register, handleSubmit, formState: { errors }} = useForm()
-    const navigate = useNavigate()
-    const { session } = useAuth()
+    // const { session } = useAuth()
+    // const navigate = useNavigate()
 
-    if (session) {
-        return navigate('/my-profile')
-    }
+    // if (session) {
+    //     return navigate('/my-profile')
+    // }
 
     const onSubmit = async formData => {
         try {
@@ -121,7 +121,7 @@ function Register() {
                         </div>
 
                         <div>
-                                <button type="submit" className="flex w-full justify-center rounded-md bg-buttonLink px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrarme</button>
+                                <button type="submit" className="flex w-full justify-center rounded-md bg-primaryColor px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverButtonLink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrarme</button>
                         </div>
                     </form>
 

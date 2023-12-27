@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar } from '../../components/organims/navbar'
 import { CategoryCard } from '../../components/organims/category-card'
 import { Link } from 'react-router-dom'
 import faceToFaceClass from '../../assets/images/face-to-face-class-image.jpg'
 import { Footer } from '../../components/organims/footer'
+import { supabase } from '../../supabase/supabaseClient'
+import { Card } from '../../components/organims/card'
+import './styles.css'
 
 function Home () {
   const [ selectRol, setSelectRol ] = useState('')
@@ -13,6 +16,34 @@ function Home () {
   }
 
   // const img = {faceTofaceClass: faceToFaceClass}
+
+  const [trainers, setTrainers] = useState([])
+
+  useEffect(() => {
+      async function fetchCardsData () {
+          const { data, error } = await supabase
+          .from('trainers')
+          .select()
+          .eq('status', false) 
+          if (error) {
+              throw error
+          }
+          if (data) {
+              setTrainers(data)
+          }
+      }
+      fetchCardsData()
+  }, [])
+
+    // Generate 10 random cards
+    const generateRandomCards = (length, count) => {
+        const order = Array.from({ length }, (_, index) => index)
+        order.sort(() => Math.random() - 0.5)
+        return order.slice(0, count)
+    };
+    
+    const numberOfRandomCardsToShow = 10
+    const randomCards = generateRandomCards(trainers.length, numberOfRandomCardsToShow)
 
   return (
     <>
@@ -94,6 +125,18 @@ function Home () {
             /> */}
         {/* </figure> */}
       </section>
+      
+      {/* 10 random cards */}
+      {/* <section className='w-full px-8 flex justify-center overflow-hidden'>
+        <div className='flex gap-10 animate-slide animate-slide infinite'>
+          {
+            randomCards.map((index) => {
+            const trainer = trainers[index]
+            return <Card key={trainer.id} data={trainer} />
+            })  
+          }
+        </div>
+      </section> */}
 
       {/* <section className='px-8 py-10 w-full lg:py-24'>
         <h2 className="mx-auto mb-12 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 md:mb-24 lg:text-5xl">¿Qué estás buscando?</h2>
@@ -113,21 +156,23 @@ function Home () {
         </div>
       </section> */}
 
-      <div className='px-10 mb-8 lg:w-2/3 lg:m-auto lg:mb-10'>
-        <h2 className=" mb-10 mx-auto text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
+      <section className='w-full py-10 px-8 flex flex-col items-center lg:py-24'>
+        <div className='px-10 mb-8 lg:w-2/3 lg:m-auto lg:mb-10'>
+          <h2 className=" mb-10 mx-auto text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
 
-        <p className='text-lg text-center mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
+          <p className='text-lg text-center mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
 
-        <div className='flex flex-col items-center gap-2 mb-6npm decoration-violet-50'>
-          <Link to={'/register'} className='w-full flex justify-center'>
-            <button className="w-full text-lg rounded-md bg-primaryColor hover:bg-hPrimaryColor px-2.5 py-1.5 font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 leading-10 sm:w-3/4">Crear Perfil</button>
-          </Link>
+          <div className='flex flex-col items-center gap-2 mb-6npm decoration-violet-50'>
+            <Link to={'/register'} className='w-full flex justify-center'>
+              <button className="w-full text-lg rounded-md bg-primaryColor hover:bg-hPrimaryColor px-2.5 py-1.5 font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 leading-10 sm:w-3/4">Crear Perfil</button>
+            </Link>
 
-          <Link to={'/guide'}>
-            <button className="text-lg font-semibold leading-6 text-gray-900 underline">Más información</button>
-          </Link>
+            <Link to={'/guide'}>
+              <button className="text-lg font-semibold leading-6 text-gray-900 underline">Más información</button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
 
       <Footer />
     </>

@@ -13,8 +13,6 @@ function Navbar () {
     const { session } = useAuth()
     
     const handleMobileMenuToggle = () => {setIsMobileMenuOpen(!isMobileMenuOpen)}
-
-    // const logo = { logo: logoImg }
     
     // Fetch data from supabase - table trainers - column avatar
     useEffect(() => {
@@ -30,12 +28,11 @@ function Navbar () {
                 if (data) {
                     setAvatarImg(data)
                 }
-                console.log(data);
+                // console.log(data);
             }
         }
         fetchAvatarData()
     }, [session])
-    // console.log(avatarImg);
     
     return (
         <div className='w-full pt-2 mb-10'>
@@ -53,7 +50,7 @@ function Navbar () {
                     {
                         isMobileMenuOpen && (!session ?  
                         <ul className='w-72 p-4 flex flex-col items-end gap-4 rounded-md absolute top-8 right-0 bg-white shadow-sm ring-1 ring-inset ring-gray-300'>
-                            <li className='w-full flex justify-center rounded-lg bg-focus px-3 py-1.5 text-sm font-semibold leading-10 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                            <li className='w-full flex justify-center rounded-lg bg-focus px-3 py-1.5 text-sm font-semibold leading-10 text-white shadow-sm hover:bg-hFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                                 <NavLink to='/register'>
                                     <p className='text-lg font-medium leading-6 text-white'>Soy Profesional de la Salud</p>
                                 </NavLink>
@@ -83,7 +80,7 @@ function Navbar () {
                     {
                         (!session ? 
                             <ul className='flex justify-between items-center mr-6 gap-x-5'>
-                                <li className='flex w-full justify-center rounded-lg bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                                <li className='flex w-full justify-center rounded-lg bg-focus px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hFocus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                                     <NavLink to='/register'>
                                         <p className='text-lg font-medium leading-10 text-white'>Soy Profesional de la Salud</p>
                                     </NavLink>

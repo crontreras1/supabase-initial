@@ -93,11 +93,11 @@ function RegisterForm() {
 
         <form onSubmit={ onSubmit }>
             <div className="mx-auto space-y-12 max-w-2xl px-6">
-{/* avatar */}
 
                 <div className="border-b border-gray-900/10 pb-12">
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">General:</h3>
 
+                    {/* avatar */}
                     <div className="mt-6 flex flex-col items-start justify-center gap-x-3">
                         <label htmlFor="avatar" className="block text-sm font-medium leading-6 text-gray-900">URL imagen de perfil:</label>
 
@@ -110,7 +110,8 @@ function RegisterForm() {
                             className="mt-2 block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 sm:w-1/2"
                         />
                     </div>
-{/* // Rol */}
+
+                    {/* // Rol */}
                     <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
                         <label htmlFor="rol" className="block text-sm font-medium leading-6 text-gray-900">Rol:</label>
                         
@@ -119,7 +120,12 @@ function RegisterForm() {
                                 id='rol'
                                 name='rol'
                                 autoComplete='rol-name'
-                                { ...register('rol') }
+                                { ...register('rol', {
+                                    required: {
+                                        value: true,
+                                        message: 'Rol es requerido'
+                                    }
+                                }) }
                                 className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6 cursor-pointer'
                             >
                                 <option>Seleccionar</option>
@@ -130,9 +136,9 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* // firtsName & lastName */}
+                    {/* // firtsName & lastName */}
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-{/* firstName */}
+                        {/* firstName */}
                         <div className="sm:col-span-3">
                             <label htmlFor="firstName" className="block text-sm font-medium leading-6 text-gray-900">Nombre(s):</label>
 
@@ -155,7 +161,7 @@ function RegisterForm() {
                             </div>
                         </div>
 
-{/* // lastName */}
+                        {/* // lastName */}
                         <div className="sm:col-span-3">
                             <label htmlFor="lastName" className="block text-sm font-medium leading-6 text-gray-900">Apellido(s):</label>
 
@@ -180,7 +186,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* // genre */}
+                    {/* // genre */}
                     <div className="mt-6 flex flex-col items-start justify-center gap-x-3 ">
                         <label htmlFor="genre" className="block text-sm font-medium leading-6 text-gray-900">Genero:</label>
                         
@@ -199,7 +205,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* // benefits */}
+                    {/* // benefits */}
                     <div className="mt-6 col-span-full">
                         <label htmlFor="benefits" className="block text-sm font-medium leading-6 text-gray-900">Beneficios: (opcional)</label>
 
@@ -211,13 +217,18 @@ function RegisterForm() {
                                 id="benefits"
                                 rows={ 3 }
                                 maxLength={ 120 }
-                                { ...register('benefits') }
+                                { ...register('benefits', {
+                                    required: {
+                                        value: true,
+                                        message: 'Beneficios es requerido'
+                                    }
+                                }) }
                                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
 
-{/* // biography */}
+                    {/* // biography */}
                     <div className=" mt-6 col-span-full">
                         <label htmlFor="biography" className="block text-sm font-medium leading-6 text-gray-900">Acerca de mi: (opcional)</label>
 
@@ -234,7 +245,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* // education */}
+                    {/* // education */}
                     <div className=" mt-6 col-span-full">
                         <label htmlFor="education" className="block text-sm font-medium leading-6 text-gray-900">Educación: (opcional)</label>
 
@@ -250,13 +261,12 @@ function RegisterForm() {
                             />
                         </div>
                     </div>
-
                 </div>
 
                 <div className="border-b border-gray-900/10 pb-12">
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">Información de contacto:</h3>
-{/* // email */}
 
+                    {/* // email */}
                     <div className="mt-6 sm:col-span-4">
                         <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">   </label>
                         
@@ -281,7 +291,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* // tel */}
+                    {/* // tel */}
                     <div className="mt-6 sm:col-span-4">
                         <label htmlFor="tel" className="block text-sm font-medium leading-6 text-gray-900">WhatsApp: (Opcional)</label>
 
@@ -304,7 +314,7 @@ function RegisterForm() {
                         <p className="block text-sm font-medium leading-6 text-gray-900">Redes Sociales: (Opcional)</p>
                         
                         <div className="w-1/2">
-{/* instagramForm */}
+                            {/* instagramForm */}
                             <div className="mt-2 flex justify-between">
                                 <label htmlFor="social-media-instagram" className="mb-3 text-sm leading-6 text-gray-600">Instagram:</label>
                                 
@@ -318,7 +328,7 @@ function RegisterForm() {
                                 />
                             </div>
                             
-{/* facebookForm */}
+                            {/* facebookForm */}
                             <div className="mt-2 flex justify-between">
                                 <label htmlFor="social-media-facebook" className="mb-3 text-sm leading-6 text-gray-600">Facebook:</label>
 
@@ -332,7 +342,7 @@ function RegisterForm() {
                                 />
                             </div>
                             
-{/* twitterForm */}
+                            {/* twitterForm */}
                             <div className="mt-2 flex justify-between">
                                 <label htmlFor="social-media-x" className="mb-3 text-sm leading-6 text-gray-600">Twitter:</label>
 
@@ -353,7 +363,7 @@ function RegisterForm() {
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">Servicios:</h3>
 
                     <div className="w-1/2">
-{/* faceToFaceClasses */}
+                        {/* faceToFaceClasses */}
                         <div className="mt-2 flex justify-between items-end">
                             <label htmlFor="face-to-face-classes" className='text-sm leading-6 text-gray-600'>Clases Presenciales:</label>
 
@@ -366,7 +376,7 @@ function RegisterForm() {
                             />
                         </div>
 
-{/* onlineClasses */}
+                        {/* onlineClasses */}
                         <div className="mt-2 flex justify-between items-end">
                             <label htmlFor="online-classes" className='text-sm leading-6 text-gray-600'>Clases Online:</label>
 
@@ -379,7 +389,7 @@ function RegisterForm() {
                             />
                         </div>
 
-{/* tools */}
+                        {/* tools */}
                         <div className="mt-2 flex justify-between items-end">
                             <label htmlFor="tools" className='text-sm leading-6 text-gray-600'>Material de trabajo:</label>
 
@@ -392,7 +402,7 @@ function RegisterForm() {
                             />
                         </div>
 
-{/* freeClass */}
+                        {/* freeClass */}
                         <div className="mt-2 flex justify-between items-end
                         ">
                             <label htmlFor="free-class" className='text-sm leading-6 text-gray-600'>Primera clase gratuita:</label>
@@ -407,7 +417,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* schedule */}
+                    {/* schedule */}
                     <div className=" mt-6 col-span-full">
                         <label htmlFor="schedule" className="block text-sm font-medium leading-6 text-gray-900">Agenda: (opcional)</label>
 
@@ -425,7 +435,7 @@ function RegisterForm() {
                         </div>
                     </div>
 
-{/* location */}
+                    {/* location */}
                     <div className=" mt-6 col-span-full">
                         <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">Ubicación:</label>
                         
@@ -449,7 +459,7 @@ function RegisterForm() {
                     </div>
                 </div>
 
-{/* minPrice & macPrice */}
+                {/* minPrice & macPrice */}
                 <div  className=" pb-12">
                     <h3 className="mb-6 text-2xl font-semibold leading-7 text-gray-900">Precio:</h3>
 
@@ -461,7 +471,7 @@ function RegisterForm() {
                         <div className="block sm:flex gap-6">
                             <label htmlFor="minPrice" className="block text-sm font-medium leading-6 text-gray-900">Mínimo:</label>
 
-{/* minPrice */}
+                            {/* minPrice */}
                             <div className="mt-2">
                                 <input
                                     id="minPrice"
@@ -483,7 +493,7 @@ function RegisterForm() {
 
                             <label htmlFor="maxPrice" className="block text-sm font-medium leading-6 text-gray-900">Máximo:</label>
                             
-{/* maxPrice */}
+                            {/* maxPrice */}
                             <div className="mt-2">
                                 <input
                                     id="maxPrice"

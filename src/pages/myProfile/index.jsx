@@ -15,7 +15,7 @@ function MyProfile () {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const { session } = useAuth()
     const navigate = useNavigate()
-    console.log(trainersData);
+    // console.log(trainersData);
     
     if (!session) {
         navigate('/')
@@ -90,6 +90,21 @@ function MyProfile () {
         }        
         fetchTrainersData ()
     }, [session])
+
+    async function deleteProfile () {
+        const { error } = await supabase
+        .from('trainers')
+        .delete()
+        .eq('id_profile', session.user.id)
+        if (error) {
+            console.log('El perfil no pudo ser eliminado')
+        }
+        if (!error) {
+            await supabase.auth.signOut()
+            console.log('Perfil eliminado correctamente')
+            navigate('/')
+        }
+    }
 
     return (
         <>
@@ -511,11 +526,11 @@ function MyProfile () {
 {/* Extra buttons */}
                         <div className='flex flex-col my-8 gap-y-2'>
 {/* Update plan */}
-                            <button className='rounded-md bg-buttonLink px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center md:w-full gap-2'>{ < IoMdHappy className='text-white w-5 h-5' /> }Actualizar Plan</button>
+                            <button className='rounded-md bg-primaryColor px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center hover:bg-hPrimaryColor md:w-full gap-2'>{ < IoMdHappy className='text-white w-5 h-5' /> }Actualizar Plan</button>
 {/* Contact us */}
                             <a href='https://wa.me/message/CJQCFQJYA5U7G1' target='_blank' className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center md:w-full gap-2'>{ < FaWhatsapp className='text-white w-5 h-5' /> }Asistencia</a>
 {/* Delete account */}
-                            <button className='rounded-md px-2.5 py-1.5 text-sm font-semibold w-full flex justify-center items-center md:w-full gap-2 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>{ < MdDeleteOutline className='text-gray-900 w-5 h-5' /> }Eliminar perfil</button>
+                            <button onClick={ deleteProfile } className='rounded-md px-2.5 py-1.5 text-sm font-semibold w-full flex justify-center items-center md:w-full gap-2 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>{ < MdDeleteOutline className='text-gray-900 w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>
