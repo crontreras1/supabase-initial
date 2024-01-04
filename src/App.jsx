@@ -1,7 +1,7 @@
 import { BrowserRouter, useRoutes } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Register } from "./pages/Auth/Register"
-import { RegisterForm } from "./pages/RegisterForm"
+// import { RegisterForm } from "./pages/RegisterForm"
 import { Login } from "./pages/Auth/Login"
 import { NotFound } from "./pages/Notfound"
 import { Profile } from "./pages/Profile"
@@ -20,7 +20,7 @@ function App() {
     let routes = useRoutes ([
       { path: '/', element: <Home /> },
       { path: '/register', element: <Register /> },
-      { path: '/register-form', element: <RegisterForm /> },
+      // { path: '/register-form', element: <RegisterForm /> },
       { path: '/login', element: <Login /> },
       { path: '/my-profile', element: <MyProfile /> },
       { path: '/trainers', element: <Trainers /> },

@@ -42,7 +42,7 @@ function Trainers () {
                 {
                     randomCards.map((index) => {
                     const trainer = trainers[index]
-                    return <Card key={trainer.id} data={trainer} />
+                    return <Card key={trainer.id} data={trainer} /> 
                     })
                 }
             </div>

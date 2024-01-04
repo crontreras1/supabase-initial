@@ -91,7 +91,7 @@ function Profile () {
 
                                 {/* schedule */}
                                 <div className=" mt-6 col-span-full">
-                                    <p htmlFor="schedule" className="block text-xl font-medium leading-6 text-gray-900">Agenda:</p>
+                                    <p htmlFor="schedule" className="block text-xl font-medium leading-6 text-gray-900">Agenda</p>
 
                                     <p className="mb-3 text-xl leading-6 text-gray-600">{profileData && profileData.schedule }</p>
                                 </div>
@@ -121,33 +121,46 @@ function Profile () {
                                 </div>
                             </div>
 
-                            <div className="w-full mt-6 flex justify-center sm:col-span-4">
-                                { 
-                                    profileData && profileData.tel ? 
-                                        <button onClick={ openContactModalBtn } className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-xl font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
-                                            < FaWhatsapp className='text-white w-5 h-5' />
+                            {/* tel */}
+                            { profileData && profileData.tel ? 
+                                <div className="w-full mt-6 flex justify-center sm:col-span-4">
+                                    { 
+                                        profileData && profileData.tel ? 
+                                            <button onClick={ openContactModalBtn } className="w-full rounded-md cursor-pointer bg-lime-600 px-2.5 py-1.5 text-xl font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 lg:w-2/3rounded-md  flex justify-center items-center md:w-full gap-2 sm:w-1/2 lg:w-3/5">
+                                                < FaWhatsapp className='text-white w-5 h-5' />
 
-                                            Contactar
-                                        </button> : 
-                                        <span></span>
-                                }    
-                            </div>
+                                                Contactar
+                                            </button> : 
+                                            <span></span>
+                                    }    
+                                </div>
+                                    : <span className='hidden'></span>
+                            }
 
                             <div className="mt-6 flex justify-center gap-8 sm:grid-cols-6">
                                     {/* instagramForm */}
-                                    <a href={ profileData && profileData.instagram_form } target='_blank'>
-                                        <SiInstagram className='w-6 h-6 cursor-pointer' />
-                                    </a>
+                                    { profileData && profileData.instagram_form ? 
+                                        <a href={ profileData && profileData.instagram_form } target='_blank'>
+                                            <SiInstagram className='w-6 h-6 cursor-pointer' />
+                                        </a>
+                                        : <span className='hidden'></span>
+                                    }
 
                                     {/* facebookForm */}
-                                    <a href={ profileData && profileData.facebook_form } target='_blank'>
-                                        <FaFacebookSquare className='w-6 h-6 cursor-pointer' />
-                                    </a>
+                                    { profileData && profileData.facebook_form ? 
+                                        <a href={ profileData && profileData.facebook_form } target='_blank'>
+                                            <FaFacebookSquare className='w-6 h-6 cursor-pointer' />
+                                        </a>
+                                        : <span className='hidden'></span>
+                                    }
 
                                     {/* twitterForm */}
-                                    <a href={ profileData && profileData.twitter_form } target='_blank'>
-                                        <RiTwitterXFill className='w-6 h-6 cursor-pointer' />
-                                    </a>
+                                    { profileData && profileData.twitter_form ? 
+                                        <a href={ profileData && profileData.twitter_form } target='_blank'>
+                                            <RiTwitterXFill className='w-6 h-6 cursor-pointer' />
+                                        </a>
+                                        : <span className='hidden'></span>
+                                    }
                             </div>
                         </div>
                     </div>

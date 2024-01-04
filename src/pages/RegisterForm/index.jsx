@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { RxAvatar  } from "react-icons/rx";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
@@ -9,10 +9,14 @@ function RegisterForm() {
     const [ trainersData, setTrainersData ] = useState({})
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const { session } = useAuth() 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
+
+    const toMyProfile = () => {
+        return navigate('/my-profile')
+
+    }
 
     // if (session) {
-    //     return navigate('/my-profile')
     // }
 
 // push data to table trainers
@@ -522,7 +526,7 @@ function RegisterForm() {
                 <div className="mt-6 pb-12 flex items-center justify-end gap-x-6">
                     <NavLink to="/" className="text-sm font-semibold leading-6 text-gray-900">Llenar más tarde</NavLink>
 
-                    <button type="submit" className="w-1/3 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Terminar</button>
+                    <button type="submit" onClick={ toMyProfile } className="w-1/3 leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Terminar</button>
                 </div>
             </div>
         </form>

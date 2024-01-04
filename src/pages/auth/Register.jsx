@@ -1,20 +1,20 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useForm } from "react-hook-form"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { supabase } from "../../supabase/supabaseClient"
 import { useAuth } from '../../Auth'
 
 function Register() {
     const { register, handleSubmit, formState: { errors }} = useForm()
-    // const { session } = useAuth()
-    // const navigate = useNavigate()
+    const { session } = useAuth()
+    const navigate = useNavigate()
 
-    // if (session) {
-    //     return navigate('/my-profile')
-    // }
+    if (session) {
+        return navigate('/my-profile')
+    }
 
     const onSubmit = async formData => {
-        try {
+        // try {
             const { data, error } = await supabase.auth.signUp({
                 email: formData.email,
                 password: formData.password
@@ -30,11 +30,11 @@ function Register() {
                 await supabase
                 .from('trainers')
                 .insert({ id_profile: data.user.id, email: data.user.email })
+                navigate('/my-profile')
             }
-            navigate('/register-form')
-        } catch (error) {
-            alert('Cuenta existente', error) 
-        }
+        // } catch (error) {
+        //     alert('Cuenta existente', error) 
+        // }
     }
     
     // const handleSubmit = async (e) => {
