@@ -1,19 +1,23 @@
-import { FaArrowLeft } from "react-icons/fa";
+import React, { useEffect, useRef } from "react"
+import { FaArrowLeft } from "react-icons/fa"
 import { useForm } from "react-hook-form"
 import { NavLink, useNavigate } from "react-router-dom"
 import { supabase } from "../../supabase/supabaseClient"
 import { useAuth } from '../../Auth'
+import emailjs from "@emailjs/browser"
 
 function Register() {
-    const { register, handleSubmit, formState: { errors }} = useForm()
+    const { register, handleSubmit, formState: { errors }, control} = useForm()
     const { session } = useAuth()
     const navigate = useNavigate()
+    const form = useRef(null)
 
-    if (session) {
-        return navigate('/my-profile')
-    }
+    useEffect(() => {
+        form.current = control;
+      }, [control]);
 
-    const onSubmit = async formData => {
+    
+    const onSubmit = async (formData, event) => {
         // try {
             const { data, error } = await supabase.auth.signUp({
                 email: formData.email,
@@ -32,35 +36,29 @@ function Register() {
                 .insert({ id_profile: data.user.id, email: data.user.email })
                 navigate('/my-profile')
             }
+
+            await new Promise(resolve => setTimeout(resolve, 0));
+            console.log(form.current)
+            
+            await emailjs.sendForm('service_y0jmace', 'template_b0bq6bl', form.current, 'hiOsap8kycZVCS90_')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
         // } catch (error) {
-        //     alert('Cuenta existente', error) 
-        // }
+            //     console.error('Error al registrar y enviar correo.', error) 
+            // }
+            // console.log(form.current)
+            
+        event.preventDefault();
     }
-    
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     // const email = e.target.email.value
-    //     // const password = e.target.password.value
-
-    //     const { data } = await supabase.auth.signUp({
-    //         email: e.target.email.value,
-    //         password: e.target.password.value
-    //       })
-        
-    //     // const socialMedia = [
-    //     //     {
-    //     //     name: facebook,
-    //     //     url: 'www.example.com',
-    //     //     icon: '<i class="fi fi-brands-facebook"></i>'
-    //     //     },
-    //     // ]
-        
-        // const { error } = await supabase
-        // .from('profiles')
-        // .insert({ id: data.user.id, id_role: '79b48195-372d-41fd-b28a-33cc03586774', email: data.user.email })
-        // console.log(data);
-    // }
-
+            
+            
+    if (session) {
+        return navigate('/my-profile')
+    }
+                            
     return (
         <>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -73,21 +71,22 @@ function Register() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" onSubmit={ handleSubmit(onSubmit) }>
+                    <form ref={ form } onSubmit={ handleSubmit(onSubmit) } className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Correo Electrónico</label>
                             
                             <div className="mt-2">
                                 <input 
-                                    autoComplete="email"
-                                    {...register("email", {
-                                        required: {
-                                            value: true,
-                                            message: 'Email es necesario',
-                                        }
-                                        
-                                    })}
-                                    className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 sm:text-sm sm:leading-6"
+                                type="email"
+                                name="user_email"
+                                {...register("email", {
+                                    required: {
+                                        value: true,
+                                        message: 'Email es necesario',
+                                    }
+                                    
+                                })}
+                                className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 sm:text-sm sm:leading-6"
                                 />
 
                                 { errors.email && <span className="block text-red-600 text-xs">{ errors.email.message }</span>}

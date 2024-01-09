@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../../supabase/supabaseClient"
-import { useAuth } from "../../../Auth"
 
 function ContactModal ({ onClose, onContact }) {    
     return (
-        <div className="absolute w-screen h-screen flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
                 <div className=" w-screen h-screen bg-black opacity-50 absolute flex"></div>
 
                 <div className="w-60 h-96 p-5 bg-white rounded-lg flex flex-col justify-center align-center gap-y-10 sm:p-10 sm:gap-10 z-10 sm:w-96">

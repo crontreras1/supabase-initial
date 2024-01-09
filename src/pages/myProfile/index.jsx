@@ -9,13 +9,14 @@ import { IoMdHappy } from "react-icons/io";
 import { useAuth } from '../../Auth'
 import { supabase } from '../../supabase/supabaseClient'
 import { Footer } from '../../components/organims/footer'
+import { DeleteModal } from '../../components/templates/DeleteModal'
 
 function MyProfile () {
     const [ trainersData, setTrainersData ] = useState({})
+    const [ openDeleteModal, setOpenDeleteModal ] = useState(false)
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const { session } = useAuth()
     const navigate = useNavigate()
-    // console.log(trainersData);
     
     if (!session) {
         navigate('/')
@@ -91,23 +92,18 @@ function MyProfile () {
         fetchTrainersData ()
     }, [session])
 
-    async function deleteProfile () {
-        const { error } = await supabase
-        .from('trainers')
-        .delete()
-        .eq('id_profile', session.user.id)
-        if (error) {
-            console.log('El perfil no pudo ser eliminado')
-        }
-        if (!error) {
-            await supabase.auth.signOut()
-            console.log('Perfil eliminado correctamente')
-            navigate('/')
-        }
+    const openDeleteModalBtn = () => {
+        setOpenDeleteModal(true)
+    }
+
+    const closeDeleteModalBtn = () => {
+        setOpenDeleteModal(false)
     }
 
     return (
         <>
+            {openDeleteModal && <DeleteModal onClose={ closeDeleteModalBtn }/>}
+
             <Navbar />
 
             <div className="mx-auto space-y-12 max-w-3xl px-6">
@@ -530,7 +526,7 @@ function MyProfile () {
 {/* Contact us */}
                             <a href='https://wa.me/message/CJQCFQJYA5U7G1' target='_blank' className='rounded-md bg-lime-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 w-full flex justify-center items-center md:w-full gap-2'>{ < FaWhatsapp className='text-white w-5 h-5' /> }Asistencia</a>
 {/* Delete account */}
-                            <button onClick={ deleteProfile } className='rounded-md px-2.5 py-1.5 text-sm font-semibold w-full flex justify-center items-center md:w-full gap-2 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>{ < MdDeleteOutline className='text-gray-900 w-5 h-5' /> }Eliminar perfil</button>
+                            <button onClick={ openDeleteModalBtn } className='rounded-md px-2.5 py-1.5 text-sm font-semibold w-full flex justify-center items-center md:w-full gap-2 bg-white text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>{ < MdDeleteOutline className='text-gray-900 w-5 h-5' /> }Eliminar perfil</button>
                         </div>
                     </div>
                 </form>
