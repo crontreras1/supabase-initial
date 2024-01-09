@@ -4,6 +4,7 @@ import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
 import { Footer } from '../../components/organims/footer'
 import { Link } from 'react-router-dom'
+import { SearchTrainers } from '../../components/templates/SearchTrainers'
 
 function Trainers () {
     const [trainers, setTrainers] = useState([])
@@ -38,6 +39,8 @@ function Trainers () {
     return (
         <>
             <Navbar />
+
+            <SearchTrainers />
             
             <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
                 {/* `profile/${data.data.id_profile}` */}

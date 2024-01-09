@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Navbar } from '../../components/organims/navbar'
 import { Card } from '../../components/organims/card'
 import { supabase } from '../../supabase/supabaseClient'
+import { SearchTrainers } from '../../components/templates/SearchTrainers'
 
 function PersonalTrainersCards () {
     const [personalTrainers, setPersonalTrainers] = useState([])
@@ -34,6 +35,8 @@ function PersonalTrainersCards () {
         <>
             <Navbar />
             
+            <SearchTrainers />
+
             <div className="h-full flex justify-center gap-10 flex-wrap sm:px-10 sm:justify-star">
                 {/* {
                     personalTrainers && 
