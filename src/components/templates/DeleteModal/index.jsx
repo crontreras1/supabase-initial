@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../../supabase/supabaseClient"
 import { useAuth } from "../../../Auth"
+import { useNavigate } from "react-router-dom"
 
 function DeleteModal ({ onClose }) {  
+    const { session } = useAuth()
+    const navigate = useNavigate() 
+
     async function deleteProfile () {
         const { error } = await supabase
         .from('trainers')

@@ -22,6 +22,8 @@ function MyProfile () {
         navigate('/')
     }
 
+    console.log(trainersData);
+
 // push data to table trainers
     const onSubmit = handleSubmit( async data => {  
         const dataTrainer = {
@@ -83,6 +85,7 @@ function MyProfile () {
                     setValue('onlineClasses', data[0].online_classes) 
                     setValue('rol', data[0].rol) 
                     setValue('schedule', data[0].schedule) 
+                    setValue('status', data[0].status) 
                     setValue('tel', data[0].tel) 
                     setValue('tools', data[0].tools) 
                     setValue('twitterForm', data[0].twitter_form) 
@@ -106,7 +109,13 @@ function MyProfile () {
 
             <Navbar />
 
-            <div className="mx-auto space-y-12 max-w-3xl px-6">
+            <section className='mx-auto space-y-12 max-w-3xl px-6 flex justify-center text-sm font-medium leading-6 text-gray-900 border-b border-gray-300'>
+                <div>
+                    <p>Estatus: { trainersData.status ? <span className=' text-lime-500'> Activo </span> : <span className='text-red-500'> Inactivo </span> }</p>
+                </div>
+            </section>
+
+            <section className="mx-auto space-y-12 max-w-3xl px-6">
                 <form onSubmit={ onSubmit } className="flex flex-col-reverse md:grid md:grid-cols-3 md:gap-4">
                     <div className='col-span-2 p-4'>
                         <div className="mt-6 col-span-full">
@@ -530,7 +539,7 @@ function MyProfile () {
                         </div>
                     </div>
                 </form>
-            </div>
+            </section>
         </>
     )
 }
