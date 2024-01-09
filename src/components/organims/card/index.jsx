@@ -1,11 +1,8 @@
 import { RxAvatar } from "react-icons/rx"
-import { Link } from 'react-router-dom'
-
 
 
 function Card (data) {
     return (
-        <Link to={ `profile/${data.data.id_profile}` }>
             <div className='cursor-pointer w-72 h-96 p-3 ring-1 ring-inset ring-gray-500/10 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out'>
                 <div className='h-1/2 relative'>
                     <figure className='w-full h-full'>
@@ -33,7 +30,6 @@ function Card (data) {
                     </div>
                 </div>
             </div>
-        </Link>
     )
 }
 

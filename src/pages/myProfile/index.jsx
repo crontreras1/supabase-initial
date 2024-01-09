@@ -22,8 +22,6 @@ function MyProfile () {
         navigate('/')
     }
 
-    console.log(trainersData);
-
 // push data to table trainers
     const onSubmit = handleSubmit( async data => {  
         const dataTrainer = {
@@ -109,7 +107,7 @@ function MyProfile () {
 
             <Navbar />
 
-            <section className='mx-auto space-y-12 max-w-3xl px-6 flex justify-center text-sm font-medium leading-6 text-gray-900 border-b border-gray-300'>
+            <section className='mx-auto p-10 space-y-12 max-w-3xl px-6 flex justify-center text-sm font-medium leading-6 text-gray-900 border-b border-gray-300'>
                 <div>
                     <p>Estatus: { trainersData.status ? <span className=' text-lime-500'> Activo </span> : <span className='text-red-500'> Inactivo </span> }</p>
                 </div>
