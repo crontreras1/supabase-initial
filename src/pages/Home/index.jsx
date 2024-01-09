@@ -10,6 +10,7 @@ import './styles.css'
 
 function Home () {
   const [ selectRol, setSelectRol ] = useState('')
+  const [trainers, setTrainers] = useState([])
 
   const handleTypeChange = (event) => {
     setSelectRol(event.target.value)
@@ -17,7 +18,6 @@ function Home () {
 
   // const img = {faceTofaceClass: faceToFaceClass}
 
-  const [trainers, setTrainers] = useState([])
 
   useEffect(() => {
       async function fetchCardsData () {
@@ -127,16 +127,16 @@ function Home () {
       </section>
       
       {/* 10 random cards */}
-      {/* <section className='w-full px-8 flex justify-center overflow-hidden'>
+      <section className='w-90 pb-10 px-5 flex justify-start overflow-hidden overflow-x-auto sm:mx-10 sm:px-10'>
         <div className='flex gap-10 animate-slide animate-slide infinite'>
           {
             randomCards.map((index) => {
             const trainer = trainers[index]
-            return <Card key={trainer.id} data={trainer} />
+            return <Link to={ `trainers/profile/${trainers[index].id_profile}` }><Card key={trainer.id} data={trainer} /></Link>
             })  
           }
         </div>
-      </section> */}
+      </section>
 
       {/* <section className='px-8 py-10 w-full lg:py-24'>
         <h2 className="mx-auto mb-12 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 md:mb-24 lg:text-5xl">¿Qué estás buscando?</h2>
