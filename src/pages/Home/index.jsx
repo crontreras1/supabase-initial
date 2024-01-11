@@ -12,8 +12,7 @@ import { SearchTrainers } from '../../components/templates/SearchTrainers'
 function Home () {
   const [trainers, setTrainers] = useState([])
 
-
-
+  console.log(trainers)
   // const img = {faceTofaceClass: faceToFaceClass}
 
 
@@ -75,8 +74,9 @@ function Home () {
       </section>
       
       {/* 10 random cards */}
-      <section className='w-90 pb-10 px-5 flex justify-start overflow-hidden overflow-x-auto sm:mx-10 sm:px-10'>
-        <div className='flex gap-10 animate-slide animate-slide infinite'>
+      <section className='w-full px-8 flex flex-col'>
+        <h2 className='mb-10 mx-auto text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl'>Algunos de nuestros entrenadores:</h2>
+        <div className='w-90 pb-10 px-5 flex justify-star gap-8 overflow-hidden overflow-x-auto sm:mx-10 sm:px-10'>
           {
             randomCards.map((index) => {
             const trainer = trainers[index]
@@ -106,7 +106,7 @@ function Home () {
 
       <section className='w-full py-10 px-8 flex flex-col items-center lg:py-24'>
         <div className='px-10 mb-8 lg:w-2/3 lg:m-auto lg:mb-10'>
-          <h2 className=" mb-10 mx-auto text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
+          <h2 className="mb-10 mx-auto text-center text-3xl font-bold leading-9 tracking-tight text-gray-900 lg:text-5xl">¿Eres entrenador, Fisioterapeuta y/o nutricionista? Crea tu cuenta y consigue tus clientes</h2>
 
           <p className='text-lg text-center mb-10'> Si eres un entrenador, fisioterapeuta o nutricionista comprometido con la excelencia, ¡te invitamos a unirte a nosotros y crear tu perfil hoy mismo! Exhibe tu experiencia, comparte tus logros y conecta con personas que buscan tu experiencia. ¡Haz crecer tu clientela y amplía tu impacto! Únete a nuestra comunidad de profesionales de la salud y deja que tu talento brille. ¡Es el momento perfecto para impulsar tu carrera hacia nuevos horizontes!</p>
 
